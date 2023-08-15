@@ -25,7 +25,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/custom-theme.scss",
+              "src/styles.css",
+              "src/my-theme.scss",
+              "node_modules/prismjs/themes/prism-tomorrow.css"
             ],
             "scripts": []
           },

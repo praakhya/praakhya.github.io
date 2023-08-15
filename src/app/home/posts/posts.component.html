@@ -1,2 +1,12 @@
-<p>posts works!</p>
-<div style="padding:100px" markdown [src]="post"></div>
+<div id="content">
+    <mat-toolbar color="primary">
+    <button mat-button routerLink="/" class="btn">
+        <mat-icon>
+            home
+        </mat-icon>
+        <span>Home</span>
+    </button>
+    </mat-toolbar>
+    <h1></h1>
+    <div markdown [src]="post" class="post"></div>
+</div>
