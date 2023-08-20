@@ -1,0 +1,781 @@
+<html><head><link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script><link rel="stylesheets" href="../../styles.css"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Extracting list of songs using Python</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+#home {
+    padding: 0.5em;
+    margin: 0.5em;
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+	align-content: baseline;
+	background-color: white;
+	border-radius: 3em;
+	position: fixed;
+	top: 1em;
+	left: 1em;
+}
+#home-text { 
+    text-decoration: none;
+	font-size: 1em;;
+	font-family: var(--roboto);
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3684998c-64ad-4d0d-bc19-23038bffd68b" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1585427670610-6e63ac2093b3?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/playlist_blue.svg"/></div><h1 class="page-title">Extracting list of songs using Python</h1><p class="page-description"></p></header><div id="home"><a id="home-text" href="../../index.html"><span class="material-symbols-outlined">
+	home
+</span></a></div><div class="page-body"><p id="1ed6e827-4538-4dcf-846f-0d8a103e4cd3" class="">This is a make-shift guide on how to get a list of songs from a youtube music playlist using web-scraping.</p><figure class="block-color-red callout" style="white-space:pre-wrap;display:flex" id="4bcb47de-7510-4f6d-8b47-72195f0270e2"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/list-indent_gray.svg"/></div><div style="width:100%"><strong><mark class="highlight-default">Table of Contents</mark></strong><nav id="aa4185d6-63c4-4e07-8d1e-358005a6afc3" class="block-color-blue table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#305449b5-a623-4364-8060-7dda5b0d98cf">What is web-scraping ?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fe2f55ae-9d8d-469f-af37-3a96177bbc8e">Task</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9254f4c9-78c5-473f-9daf-fb46ddc2c4a6">Set up</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#48326bab-f094-41e7-81fc-7212a37a45f5">Begin Scraping</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#98c0b0d7-966e-4d1f-8153-3a6db05dac5a">The complete code</a></div></nav></div></figure><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">What is web-scraping ?</summary><div class="indented"><p id="2f2c1bd5-6e86-4e71-8af5-0e244e9d3a1e" class="">As wikipedia defines it,</p><blockquote id="d6e7fdb0-bcb3-4780-9d8f-d9422d31a900" class="">Web scraping, web harvesting, or web data extraction is data scraping used for extracting data from websites.</blockquote><p id="3282e30d-6f5b-4ec2-bc0f-ea03d648c391" class="">We can make use of some libraries that python provides to perform web-scraping.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Task</summary><div class="indented"><p id="1b2c59e0-6c30-492d-8369-8a90df969680" class="">We need to get a list of songs from the youtube music page by extracting information from the html text of the page. This can be done by web-scraping.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Set up</summary><div class="indented"><p id="4d3cb9d1-bb61-4c28-b1a8-22706d14d828" class="">The first basic requirement is python installed on the system. Then, the following libraries have to be installed to be used in our python script</p><ol type="1" id="67f9bd4e-0efc-492e-8ffc-511f6b92b6e0" class="numbered-list" start="1"><li>bs4
+<code>pip install beautifulsoup4</code></li></ol><ol type="1" id="cdf1c799-63f0-402d-9722-dc4b9350f6dd" class="numbered-list" start="2"><li>csv (installed as part of python installation)</li></ol></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Begin Scraping</summary><div class="indented"><p id="70b4b2d6-3a41-4666-829f-f74f96153af9" class="">First we need to import all required modules into the python program so that we can use them. That can be done as follows,</p><pre id="7c4fcfa0-47f9-4f66-b56c-028731e913d0" class="code code-wrap"><code>from bs4 import BeautifulSoup #Module for web-scraping
+import csv #For reading and writing CSV files</code></pre><p id="c78719fc-6b15-45ac-8376-811293a40143" class="">To confirm that all the modules were found by the system, run the program once and cross check that it ran without any errors. Since only imports were done, no output statements would be seen.</p><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Get the HTML Page</summary><div class="indented"><p id="3380faac-2c2c-4233-b36a-eabfb8b693b7" class="">Now, we need to get the html page that consists of the playlist.</p><ol type="1" id="69209d5b-519b-4a4c-8d2c-38406312c09e" class="numbered-list" start="1"><li>Go to youtube music<figure id="d603209c-d434-4ba4-beb2-133cc956e43f" class="image"><a href="SongExtraction/Untitled.png"><img style="width:624px" src="SongExtraction/Untitled.png"/></a></figure></li></ol><ol type="1" id="434a3a15-1670-49c9-9440-2fbf0484682b" class="numbered-list" start="2"><li>If you are logged out, log in. Then, you should see your home screen.</li></ol><ol type="1" id="f07b9e34-0f3e-4274-b383-1bf1a0848617" class="numbered-list" start="3"><li>Select the playlist you wish to list. You should then see a page like this,
+<figure id="80123c3a-0e88-4e9a-9574-79b2591a1e66" class="image"><a href="SongExtraction/Untitled%201.png"><img style="width:432px" src="SongExtraction/Untitled%201.png"/></a></figure></li></ol><ol type="1" id="9f7a35e5-15e6-4240-b7c8-a0381db4c9f0" class="numbered-list" start="4"><li>For extraction however, just a screenshot is not helpful. So now we need the html text of this page.
+Right click on this page and select &quot;Save As&quot;<figure id="fc1d2a15-5ce6-4638-97d8-9d397732be47" class="image"><a href="SongExtraction/Untitled%202.png"><img style="width:878px" src="SongExtraction/Untitled%202.png"/></a></figure><p id="2fe9e446-1918-4236-84ce-4bce479630b6" class="">
+Save this file with a &quot;.html&quot; extension in the same directory as your python script. I will call my file &quot;ytplaylist.html&quot;</p></li></ol></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Analyse the HTML content</summary><div class="indented"><p id="4cdda64c-dc37-49dc-9034-c99b5ae9ef26" class="">On initialise observation you can observe that the html seems to be quite complex. In addition, it is not all relevant to our purposes either. So we need to figure out what part of our html text is the part that contains the songs.
+For this, we can make use of the &quot;inspect&quot; tool in our browser.</p><figure id="298ab67b-7ae5-4f0e-95c4-f98155accb05" class="image" style="text-align:center"><a href="SongExtraction/Untitled%203.png"><img style="width:288px" src="SongExtraction/Untitled%203.png"/></a></figure><p id="89e0688c-0b74-4d68-9827-ac1cb07e2537" class="">
+This option opens up a panel on the side which also shows the same html content which we just saved, plus other details which you may or may not be familiar with depending on your knowledge in web development.</p><figure id="82288435-6974-4d6d-a4f7-5f3dac0f1485" class="image" style="text-align:center"><a href="SongExtraction/Untitled%204.png"><img style="width:336px" src="SongExtraction/Untitled%204.png"/></a></figure><div id="73848624-8c2f-48d5-8fe1-17c9c2d37085" class="column-list"><div id="9704413e-edf4-4346-9459-9b8b1a1e2a74" style="width:75%" class="column"><p id="39bfbe73-224a-415d-8bf0-215efaab8ba3" class="">For now, we only need some basic knowledge.
+We will make use of the button on the top left of this panel.</p></div><div id="01240474-a41e-475e-86df-0c342cf6f26a" style="width:24.999999999999996%" class="column"><figure id="3d8f75bf-1469-4cec-9755-a064a245a9a0" class="image"><a href="SongExtraction/Untitled%205.png"><img style="width:92px" src="SongExtraction/Untitled%205.png"/></a></figure></div></div><p id="b803f1df-4d6f-4cc7-a91f-fe1331b6d672" class="">
+If you hover over this icon you will also get a keyboard shortcut to enable the same functionality. What this button does is, it allows you to highlight the code segment corresponding to any part of the interface on the left.</p><figure id="0eafd148-42d4-4706-a8ee-7824c099d10e" class="image"><a href="SongExtraction/Untitled%206.png"><img style="width:1750px" src="SongExtraction/Untitled%206.png"/></a></figure><div id="2e11f02f-88e5-444c-bc95-e6b2f09d2149" class="column-list"><div id="a41473c6-fe51-4d12-b9c7-0875f5099df2" style="width:50%" class="column"><p id="0bcc59a0-6cc2-465c-b7f3-5f994ecbae75" class="">If you are familiar with html syntax, you would know that in its syntax, text is enclosed within &quot;html tags&quot; like this
+<code>&lt;tag-name&gt;&lt;/tag-name&gt;</code>
+To be able to extract the song name and song artist together, observe your html text and find the tag that encloses them both.
+On using the hover tool I observed that the song entry is enclosed in a &quot;ytmusic-responsive-list-item-renderer&quot; tag.</p></div><div id="cf3fed93-9882-44ad-8bcc-796f964ab71a" style="width:50%" class="column"><figure id="473c1c01-89b3-4215-8a23-172154cf3e61" class="image"><a href="SongExtraction/Untitled%207.png"><img style="width:240px" src="SongExtraction/Untitled%207.png"/></a></figure></div></div><p id="da4110ca-331e-410e-82f0-fff6927e9821" class="">The text after the &quot;.&quot; is the class applied to this tag.
+Now in the inspect panel I can see the corresponding tag and its contents. On opening all the drop downs I eventually see the song name and the artist and the immediate tags enclosing them.</p><figure id="23efd3c1-b2f9-4189-a979-a8970d2d7e33" class="image"><a href="SongExtraction/Untitled%208.png"><img style="width:1976px" src="SongExtraction/Untitled%208.png"/></a></figure><p id="e4f01ec8-08e7-4be8-b860-30ddcac46a82" class="">My song/piece is &quot;Piano Concerto No. 21 in C Major, K. 467: Andante&quot; enclosed in the &quot;a&quot; tag inside the &quot;yt-formatted-string&quot; tag with class name &quot;title style-scope ytmusic-responsive-list-item-renderer complex-string&quot; and the artists/musicians are &quot;Finghin Collins, London Philharmonic Orchestra and David Parry&quot; enclosed in the tag &quot;a&quot; tag inside the &quot;yt-formatted-string&quot; tag with class name &quot;flex-column style-scope ytmusic-responsive-list-item-renderer complex-string&quot;.
+Both tags are enclosed within the &quot;ytmusic-responsive-list-item-renderer&quot; with class name &quot;style-scope ytmusic-playlist-shelf-renderer&quot;.
+This information can be used to find the songs.</p><figure id="6e13f7bf-e0d5-42e3-8edc-3d838ea89779" class="image"><a href="SongExtraction/Untitled%209.png"><img src="SongExtraction/Untitled%209.png"/></a></figure><figure id="63c33510-4f2e-4fa4-95bc-27fd0a25295c" class="image"><a href="SongExtraction/Untitled%2010.png"><img src="SongExtraction/Untitled%2010.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Extracting Information</summary><div class="indented"><p id="c1ad12ba-368e-4b7c-8f92-d39249a50b36" class="">First we will search for the parent tag that encloses the song name and the song artist tags. Once we perfect this, we can modify this method to search for the song name and the artist too.</p><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Reading the downloaded html file</summary><div class="indented"><p id="ff3f30da-c62d-4342-a05a-7c5142e20cb2" class="">First we will read the html file as simple text.
+To the previous imports we now add the following.</p><pre id="ed47664e-6e47-404b-b9be-94b176fcf875" class="code code-wrap"><code># imports
+from bs4 import BeautifulSoup #Module for web-scraping
+import csv #For reading and writing CSV files
+
+#reading the html file
+f = open(&quot;ytplaylist.html&quot;,&quot;r&quot;)
+content = f.read()</code></pre><p id="26d75ec2-9081-4f1f-8f14-082cbab6f1c6" class="">Now the variable <code>content</code> has all the html content as simple text. To verify this, print the variable.</p><pre id="565d37d4-b471-4a1c-bb38-662dd5c5a4bf" class="code code-wrap"><code>print(content)</code></pre></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Performing scraping</summary><div class="indented"><p id="8e29a270-6784-4c53-99d9-f773d95f579c" class="">To do the actual web-scraping we use the <code>BeautfiulSoup</code> library. For more details about this library refer to its website</p><figure id="807f9374-4c9e-4430-9e0e-8fb99a9fa725"><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Beautiful Soup Documentation — Beautiful Soup 4.12.0 documentation</div><div class="bookmark-description">Beautiful Soup is a
+Python library for pulling data out of HTML and XML files. It works
+with your favorite parser to provide idiomatic ways of navigating,
+searching, and modifying the parse tree. It commonly saves programmers
+hours or days of work.</div></div><div class="bookmark-href"><img src="https://www.crummy.com/favicon.ico" class="icon bookmark-icon"/>https://www.crummy.com/software/BeautifulSoup/bs4/doc/</div></div></a></figure><p id="5ed28bdb-a716-49bd-bef8-601a7ec6fece" class="">Add the following line</p><pre id="c9396e89-7c85-4295-a177-e0ff5db158ac" class="code code-wrap"><code>soup = BeautifulSoup(content, &#x27;html.parser&#x27;)</code></pre><p id="c67ab681-59e1-4b06-845e-3c0a5acf7706" class=""><code>soup</code> now has the html text in the variable <code>content</code> stored as a nested data structure. This allows us to search within the data structure on the basis of tag names, classes, id&#x27;s or other attributes.
+First we can search for tags with the tag name <code>ytmusic-responsive-list-item-renderer</code> and class name <code>style-scope ytmusic-playlist-shelf-renderer</code></p><pre id="626ee656-db84-48f1-b0b8-c406e1dc48af" class="code code-wrap"><code>for tag in soup.find_all(class_=&quot;style-scope ytmusic-playlist-shelf-renderer&quot;):
+	print(tag.text)
+</code></pre><figure id="453bde0e-622a-4c11-971d-49ddce0f8e04"><div class="source"><a href="SongExtraction/Untitled.qt">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a55a32ac-bb66-4b0c-a9f7-54b8e571c880/Untitled.qt</a></div></figure><p id="5aa40102-5762-4257-a584-364fcdb17bf6" class="">This successfully finds all the songs, however because the whole enclosing tag is being referred to, the text is displayed in a very strange manner possibly due to styling issues and we cannot individually get the name or artist. So our next step is to search for the song name and song artist individually within this tag.
+Modify the previous for loop as follows</p><pre id="8f4caa80-a2cf-4d16-b652-530f02f3d0e6" class="code code-wrap"><code>i=1
+for tag in soup.find_all(class_=&quot;style-scope ytmusic-playlist-shelf-renderer&quot;):
+	name=tag.find(class_=&quot;title style-scope ytmusic-responsive-list-item-renderer complex-string&quot;)
+	print(i,&quot;:&quot;,name.text)
+</code></pre><p id="8dc6f2ee-8939-4d8d-988d-4b8ead852293" class="">The <code>name</code> variable will have the tag that has the class name of the tag enclosing the song name. <code>name.text</code> can be used to display the text within that tag.
+The <code>i</code> variable is just used to display the number of song entries that were found and printed.
+On running this new modified script there can be 2 problems: -</p><ol type="1" id="9ea7e128-543b-4ce1-8420-bd94841e201d" class="numbered-list" start="1"><li>The songs are still displayed with excess whitespaces.</li></ol><ol type="1" id="1cf54d12-4091-4785-99bf-ed13f344c9a8" class="numbered-list" start="2"><li>The program may end with an error.
+The first problem is fixed by replacing a continuous substring of whitespaces with a single whitespace using regular expressions. For this we import another library: -</li></ol><pre id="48462dc7-220b-423a-b971-bcda433bb75e" class="code code-wrap"><code>import re
+</code></pre><blockquote id="6c8b59ee-810e-41f3-8c52-cb4047b96c8f" class="">[!info] Some points about regular expressions<ul id="967b5b3d-eceb-43c1-ae8a-0726e74590c4" class="bulleted-list"><li style="list-style-type:disc">A regular expression is a sequence of <a href="https://en.wikipedia.org/wiki/Character_(computing)">characters</a> that specifies a <a href="https://en.wikipedia.org/wiki/Pattern_matching">match pattern</a> in <a href="https://en.wikipedia.org/wiki/String_(computer_science)">text</a>. Regular expression techniques are developed in <a href="https://en.wikipedia.org/wiki/Theoretical_computer_science">theoretical computer science</a> and <a href="https://en.wikipedia.org/wiki/Formal_language">formal language</a> theory.</li></ul><ul id="eadd66bf-803c-4548-aed6-35dd0ceede8c" class="bulleted-list"><li style="list-style-type:disc">In regex, <code>\\s</code> refers to a whitespace character.
+<code>\\s+</code> refers to a whitespace character followed by any number of whitespace characters.</li></ul><ul id="c158893c-2a37-4ad1-9ae6-16dd85e60a91" class="bulleted-list"><li style="list-style-type:disc">We want to replace <code>\\s+</code> with a single space that is &quot; &quot;.</li></ul></blockquote><p id="cdfa11dc-27c6-46fb-9343-73b518a8aa66" class="">To perform the above operation we use re.sub()</p><pre id="d3aa14db-a03d-4e5f-87cb-8bc4416c35c8" class="code code-wrap"><code>re.sub(&#x27;substring to be replaced&#x27;, &#x27;new substring&#x27;, &#x27;string&#x27;)
+</code></pre><p id="fdfa08e2-761a-4270-89dd-19746a1e429e" class="">Using the above function in our code</p><pre id="ac6cc6a1-8e5b-41ac-be99-fc7ec6c62dc6" class="code code-wrap"><code># import library
+...
+
+import re
+
+...
+
+for tag in soup.find_all(class_=&quot;style-scope ytmusic-playlist-shelf-renderer&quot;):
+	name=tag.find(class_=&quot;title style-scope ytmusic-responsive-list-item-renderer complex-string&quot;)
+	print(i,&quot;:&quot;,re.sub(&quot;\\s+&quot;,&quot; &quot;,name.text))
+	i+=1
+</code></pre><p id="49de933a-c0bf-4476-b77d-fbaa34f3cfb1" class="">Now you can observe that the excess whitespaces have disappeared, but the program still ends with an error.</p><figure id="d3bd7110-f786-42cc-801e-b06fef3dde5a" class="image"><a href="SongExtraction/Untitled%2011.png"><img style="width:1146px" src="SongExtraction/Untitled%2011.png"/></a></figure><p id="bbc5c3d5-dfed-415e-b978-64fc2093190f" class="">To fix the error, first read the error message. I get the following: -</p><p id="9039b67d-f8bc-41e9-82dd-da702f0c19c3" class="">
+This happens because in the html, the class which is used for song names is also being used for something else which may not have the same attributes as the rest of the songs. In my case, this error has a simple fix. I should only print the name.text if name is <code>not None</code>. So I modify my code as follows: -</p><figure id="c6e1798b-694a-4371-b5da-fc3b5c8db92c" class="image"><a href="SongExtraction/Untitled%2012.png"><img style="width:806px" src="SongExtraction/Untitled%2012.png"/></a></figure><pre id="353901c6-9a24-45c8-834a-db6b10639f13" class="code code-wrap"><code>for tag in soup.find_all(class_=&quot;style-scope ytmusic-playlist-shelf-renderer&quot;):
+	name=tag.find(class_=&quot;title style-scope ytmusic-responsive-list-item-renderer complex-string&quot;)
+	if name!=None: #or `if name:`
+		print(i,&quot;:&quot;,re.sub(&quot;\\s+&quot;,&quot; &quot;,name.text))
+		i+=1
+</code></pre><p id="6e5795d2-fc69-46ca-b127-4a8b9de1f921" class="">Now the error should have also disappeared.</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="53ccdc83-6d65-474c-aab3-c84ff04a20f0"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/light-bulb_gray.svg"/></div><div style="width:100%"><strong>Temporarily avoiding strange errors</strong>
+I had a recognisable error which I was able to fix. However, you may get strange errors which you have not encountered before. A quick fix could be using the try and except clause.<figure class="block-color-red callout" style="white-space:pre-wrap;display:flex" id="3ed373e3-6beb-4699-99db-a0ba290f7358"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/exclamation-mark_red.svg"/></div><div style="width:100%"><strong> It is a last ditch effort!</strong>
+try and except clauses are good for temporary error correction and management. However, they should not be used ruthlessly as a fix for all problems or as conditional statements as they could hide potential issues, often quite large ones.</div></figure></div></figure><p id="6139a481-e5ff-40c3-b25f-ecf4b49ccf50" class="">Now we can use a similar class based search for finding the corresponding artist name.</p><pre id="9214baf7-5815-4af5-b134-6aaf391fdc74" class="code code-wrap"><code>i=1
+for tag in soup.find_all(class_=&quot;style-scope ytmusic-playlist-shelf-renderer&quot;):
+	name=tag.find(class_=&quot;title style-scope ytmusic-responsive-list-item-renderer complex-string&quot;)
+	artist=tag.find(class_=&quot;flex-column style-scope ytmusic-responsive-list-item-renderer complex-string&quot;)
+	if name!=None: #or `if name:`
+		print(i,&quot;:&quot;,&quot;{:s} | {:s}&quot;.format(re.sub(&quot;\\s+&quot;,&quot; &quot;,name.text),re.sub(&quot;\\s+&quot;,&quot; &quot;,artist.text)))
+	i+=1
+</code></pre><p id="a93c83ef-040d-47c1-82ef-2cd370080edb" class="">Apart from some obvious mistakes in my output(the first piece being displayed twice), the rest of the output seems to be correct.</p><figure id="40358ece-a66e-4e6e-bb08-47481fa1b87f" class="image"><a href="SongExtraction/Untitled%2013.png"><img style="width:1786px" src="SongExtraction/Untitled%2013.png"/></a></figure><p id="014a1e23-32ba-4cd9-982d-9d0774830d31" class="">Thus, for all practical purposes we have completed the task of getting a list of songs and artists from a given youtube music playlist. A next useful step could be writing this into a csv file (with a custom delimiter) so that the data is more useful.
+This is the modified code for the same: -</p><pre id="581f159c-244e-45af-8fb5-6041b57add5f" class="code code-wrap"><code>for tag in soup.find_all(class_=&quot;style-scope ytmusic-playlist-shelf-renderer&quot;):
+	name=tag.find(class_=&quot;title style-scope ytmusic-responsive-list-item-renderer complex-string&quot;)
+	artist=tag.find(class_=&quot;flex-column style-scope ytmusic-responsive-list-item-renderer complex-string&quot;)
+	if name!=None: #or `if name:`
+		with open(&#x27;ytSongs.csv&#x27;, &#x27;a&#x27;, newline=&#x27;&#x27;) as csvfile:
+			spamwriter = csv.writer(csvfile, delimiter=&#x27;|&#x27;)
+			spamwriter.writerow([i, re.sub(&quot;\\s+&quot;,&quot; &quot;,name.text), re.sub(&quot;\\s+&quot;,&quot; &quot;,artist.text)])
+		print(i,&quot;:&quot;,&quot;{:s} | {:s}&quot;.format(re.sub(&quot;\\s+&quot;,&quot; &quot;,name.text),re.sub(&quot;\\s+&quot;,&quot; &quot;,artist.text)))
+	i+=1
+</code></pre><p id="9ff09a31-817b-4cf9-8914-b731896bb8c8" class="">
+</p></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">The complete code</summary><div class="indented"><figure id="6c1107fe-0700-4eb7-8d52-934e2c2574d9"><div class="source"><a href="https://gist.github.com/praakhya/6afc2c915efeb3743b80aa08c13fd7e9">https://gist.github.com/praakhya/6afc2c915efeb3743b80aa08c13fd7e9</a></div></figure></div></details></div></article>
+</body></html>
