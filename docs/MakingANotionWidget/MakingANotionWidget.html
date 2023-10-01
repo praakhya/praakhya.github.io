@@ -1,0 +1,157 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Making a Notion Widget</title>
+<link rel="stylesheet" href="MakingANotionWidget.css"/>
+</head><body><article id="decdbefd-661f-4962-b38d-77f9920daeb3" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1648805777291-a1c45cc26f26?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 42.2%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/notion_gray.svg"/></div><h1 class="page-title">Making a Notion Widget</h1><p class="page-description"></p></header><div class="page-body"><p id="47a8fe5e-98ac-41d1-901d-0ddfa64bcf90" class="">Notion is a note-taking and productivity software that was launched in 2016. It has an interesting feature of adding your own widgets to personalise your notes. There is a wide range of widgets that Notion provides by default. However, there is also a large amount contributed by the notion user community. In this article I attempt to make my own notion widget.</p><h1 id="686b3026-eb21-40bc-a1c9-b2c1eb40997a" class="">Introduction</h1><p id="fbb2bc91-b48c-409b-bcc6-22d03dd9c720" class="">I aim to make a digital clock widget for notion. For this a very basic knowledge of HTML, CSS, and Javascript is necessary. However, the more the better. </p><h1 id="1d5e73d1-fc33-4dfc-b8dd-8e3d1f86fb2c" class="">Writing code</h1><p id="71382072-3664-47f9-93e9-b74dbebfd601" class="">First we focus on making the widget without worrying about adding it to Notion. Assume it to be an independent HTML page.</p><h2 id="ba78d461-44b4-44ee-b80a-2ff153e7c58f" class="">Finding a Colour Scheme</h2><p id="0cb75c83-79d3-4378-ae51-c6e7ad8b066a" class="">Since Notion is known for making aesthetically pleasing notes, we will try to make our widget pleasant by following a colour palette. I use <a href="https://colorhunt.co/">https://colorhunt.co/</a> for finding colour palettes.</p><p id="ced5e955-f97d-4b99-9c5e-9eec45723cdd" class="">I choose this colour palette for the clock.</p><figure id="dfb6d4d6-c4be-4ca6-9dbf-28e806f56124" class="image"><a href="MakingANotionWidget/Untitled.png"><img style="width:144px" src="MakingANotionWidget/Untitled.png"/></a></figure><h2 id="4c95c4f8-f065-4724-878c-f141c19d9311" class="">Making a Static Clock</h2><p id="b4423dca-03c0-4c15-a928-3456c43247c8" class="">First we just make the structure of the clock with the required styling. This will not contain any working parts and it will be static.</p><p id="e952bc14-1742-4c0d-b951-1faf4731886c" class="">I create a file called <em>digitalClock.html</em> which will have the HTML part of the widget. Initially it will have the following code: -</p><pre id="f2492cb3-188a-4acf-a07a-0e69935d6d68" class="code code-wrap"><code>&lt;!DOCTYPE html&gt; &lt;!-- The DOCTYPE tag tells the browser what type of document it should expect --&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt; &lt;!-- This is the text that appears on the browser tab in which the page is opened --&gt;
+            Clock
+        &lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt; &lt;!-- This tag contains all the content that appears on the page --&gt;
+        &lt;p&gt;Hello World&lt;/p&gt; &lt;!-- This is placeholder text --&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre><figure id="10989629-770b-48d0-9150-e02dec4e1412" class="image"><a href="MakingANotionWidget/Untitled%201.png"><img style="width:384px" src="MakingANotionWidget/Untitled%201.png"/></a></figure><p id="1cbf9751-04a7-46a6-ba22-a683017c7eb1" class="">Now we will make a nested div structure which resembles the clock.</p><pre id="fa77a425-043e-43bc-996b-17b9e3bdb3a3" class="code code-wrap"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;
+            Clock
+        &lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;clock&quot;&gt;
+            &lt;div id=&quot;hour-dial&quot;&gt;&lt;/div&gt;
+            &lt;div id=&quot;min-dial&quot;&gt;&lt;/div&gt;
+            &lt;div id=&quot;sec-dial&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre><p id="8cd18c8b-c09d-4965-9cee-5f6d2d373bdf" class="">Since there is no content inside these divs and no CSS properties applied, nothing will be visible on the page. So we apply some CSS.</p><p id="8a2f51be-6168-4adf-b1bc-233acabed9a0" class="">We can utilise the ids on the divs to apply the respective CSS.</p><p id="ec0c1f8d-83d8-47fa-b7ee-3d48034d252e" class="">I create a separate a new file which houses the CSS for the widget. Then I will link it to the HTML file.</p><pre id="a6685298-be29-4db3-ace5-ef34aae69659" class="code code-wrap"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;
+            Clock
+        &lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;digitalClock.css&quot;/&gt; &lt;!-- This line tells that we are linking a file called digitalClock.css to the html page whose relationship to this page is that of a stylesheet --&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;clock&quot;&gt;
+            &lt;div id=&quot;hour-dial&quot;&gt;
+
+            &lt;/div&gt;
+            &lt;div id=&quot;min-dial&quot;&gt;
+
+            &lt;/div&gt;
+            &lt;div id=&quot;sec-dial&quot;&gt;
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre><p id="9da0410a-86b3-41bd-baf2-ba1c986e21ba" class="">In the CSS we first add some barebones structure to each of the divs like borders so that we know where the divs are and how they are arranged.</p><pre id="1b9a0ac4-5c39-49cd-b0aa-3d7a05035f07" class="code code-wrap"><code>#clock {
+    border: 1px solid black;
+    width: fit-content; /* fit-content tells that the clock&#x27;s width and height should be such that it exactly contains its contents with no extra gaps. We will change this in further steps */
+    height: fit-content;
+}
+#hour-dial{
+    border: 1px solid black;
+    width: 1em;
+    height: 1em;
+}
+#min-dial{
+    border: 1px solid black;
+    width: 1em;
+    height: 1em;
+}
+#sec-dial{
+    border: 1px solid black;
+    width: 1em;
+    height: 1em;
+}</code></pre><p id="fd82a570-17d7-459f-9d58-552931c5c342" class="">On applying the above styles, the widget looks like this: -</p><figure id="ff06bf9e-297e-4373-aef2-6b57c901ba1f" class="image"><a href="MakingANotionWidget/Untitled%202.png"><img style="width:480px" src="MakingANotionWidget/Untitled%202.png"/></a></figure><p id="a1b9771b-a399-4406-9dbf-24734ad6ef9f" class="">We observe, that the hour, minute and second dial are one after the other vertically. However, we want them to be one after the other in the same line, i.e., horizontally. We can use Flex to arrange these divs accordingly.</p><pre id="ad9ce501-3707-4c4d-990d-3051e3d2a16b" class="code code-wrap"><code>#clock {
+    border: 1px solid black;
+    width: fit-content;
+    height: fit-content;
+    display: flex; /* The clock container is now a flex-box */
+    flex-direction: row; /* All the containers inside clock will be arranged in a row */
+}</code></pre><figure id="35a6dc92-e656-49f2-bb2a-1718a3283f28" class="image"><a href="MakingANotionWidget/Untitled%203.png"><img style="width:166px" src="MakingANotionWidget/Untitled%203.png"/></a></figure><p id="9bf3c0a1-c8f6-4155-914e-e6be5365e377" class="">The gap attribute adds spacing between each element inside the flex-box container.</p><pre id="80cc3820-7268-4159-8faf-7afffc4928cc" class="code code-wrap"><code>#clock {
+    border: 1px solid black;
+    width: fit-content;
+    height: fit-content;
+    display: flex; /* The clock container is now a flex-box */
+    flex-direction: row; /* All the containers inside clock will be arranged in a row */
+		gap: 0.5em;
+}</code></pre><figure id="6282d72b-e096-4d4b-b05a-99c2c602bfc4" class="image"><a href="MakingANotionWidget/Untitled%204.png"><img style="width:222px" src="MakingANotionWidget/Untitled%204.png"/></a></figure><p id="d2b2d651-5d7f-415e-bd9b-5380dbbd5181" class="">Now we need to add spacing between the container and its elements. For that we use padding.</p><pre id="7c7f5bcc-adff-418f-a221-19c6953e181a" class="code code-wrap"><code>#clock {
+    border: 1px solid black;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    padding: 1em;
+}</code></pre><figure id="f294dfc8-0d16-4fd3-bb20-3e67fa50bc2e" class="image"><a href="MakingANotionWidget/Untitled%205.png"><img style="width:192px" src="MakingANotionWidget/Untitled%205.png"/></a></figure><p id="dbef4042-b7f1-4247-9366-712a8d12cb49" class="">Now we will add colour to the widget. </p><p id="b5bcb3b1-ac1f-4b56-a994-d5d8c865989e" class="">First we add some variables that will store our colour’s hex-codes so that we can reuse them by just mentioning their variable names.</p><pre id="7f946025-963f-4197-8530-7bcdf8bb2217" class="code code-wrap"><code>:root {
+    --white: #EAEAEA;
+    --teal: #00ABB3;
+    --grey: #B2B2B2;
+    --black: #3C4048;
+}</code></pre><p id="22361f6a-070f-4e2a-ae98-2417568c5456" class="">Here we define four variables: white, teal, grey and black that are available to be used anywhere in the css file.</p><p id="72682fd3-93a8-4f26-aa5c-c13bb0165d41" class="">Now we can use these variables to add colour to the widget.</p><p id="db9f4e33-b044-4615-a41a-8dc2792cdda3" class="">First, the hour, minute and second dials’ font colours and background colours are set to teal and black respectively using the variables we defined previously.</p><pre id="65bc0c5a-a3f5-42b5-af8e-5db180d15abe" class="code code-wrap"><code>#hour-dial, #min-dial, #sec-dial {
+    background-color: var(--black);
+    color: var(--teal);
+}</code></pre><figure id="2bbb9dd2-6914-4411-a584-f93477536271" class="image"><a href="MakingANotionWidget/Untitled%206.png"><img style="width:240px" src="MakingANotionWidget/Untitled%206.png"/></a></figure><p id="2c154840-9ac0-41ba-bda1-445dab508979" class="">Since there is no text in the dials yet, we cannot see the font colour yet.</p><p id="d49f4456-a272-48a5-b360-79b6ce86b99a" class="">Similarly white (which is slightly grey) colour is applied in the background of the clock container</p><figure id="e2b92e14-3364-4116-8aba-a13d9a8e4f2c" class="image"><a href="MakingANotionWidget/Untitled%207.png"><img style="width:240px" src="MakingANotionWidget/Untitled%207.png"/></a></figure><p id="f6fe27a5-013b-4e71-a3b2-740103b6554a" class="">I make other small changes to the colours in the clock: -</p><pre id="f469c5cd-d648-478c-969c-db939b2e4a22" class="code code-wrap"><code>:root {
+    --white: #EAEAEA;
+    --teal: #00ABB3;
+    --grey: #B2B2B2;
+    --black: #3C4048;
+}
+#clock {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    padding: 1em;
+    background-color: var(--white);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    outline: 0.1em solid var(--teal);
+    outline-offset: -0.3em;
+    border-radius: 0.5em;
+    outline-style: groove;
+}
+#hour-dial, #min-dial, #sec-dial {
+    width: 1em;
+    height: 1em;
+    background-color: var(--black);
+    color: var(--teal);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 0.2em;
+}</code></pre><p id="8832ac0f-8856-4d60-8f67-aa99cf55eedd" class="">Since the clock’s colour is too similar to the background, I have add some box-shadow. This also gives the impression that the widget is 3-dimensional. For box-shadows I recommend this website: <a href="https://getcssscan.com/css-box-shadow-examples">https://getcssscan.com/css-box-shadow-examples</a>. They have 93 great options for cool box-shadows. They have a similar collection for custom buttons too!</p><figure id="9728583d-bb8f-4849-87cf-1d8bd63c90c2" class="image"><a href="MakingANotionWidget/Untitled%208.png"><img style="width:240px" src="MakingANotionWidget/Untitled%208.png"/></a></figure><h2 id="144da5e3-0e85-4f0b-8ff0-197e19bb81ab" class="">Get the Clock Ticking</h2><p id="5db40402-6e98-4484-bedf-2fdb2ee18744" class="">Now we add the text to the dials. For this we need to use javascript because the text in the clock has to change as the time changes so static HTML is not enough.</p><p id="637fcbf5-b137-4383-b0f4-32cff755a66c" class="">For the javascript portion of code I again made a separate javascript file and added it to the html.</p><pre id="25d5aab4-4307-4ce2-b7aa-258d12698b36" class="code code-wrap"><code>.
+.
+.
+	&lt;/body&gt;
+	&lt;script src=&quot;digitalClock.js&quot;&gt;&lt;/script&gt;
+&lt;/html&gt;</code></pre><p id="df41a976-b229-4578-8a22-a57d036f92d6" class="">Below is the code I wrote in the Javascript file <em>digitalClock.js</em>: -</p><pre id="32cfc0f9-4604-44c7-9285-c7d22d59ec7a" class="code code-wrap"><code>function updateTime() {
+    var now = new Date(); //now becomes an object of Date class
+		//The below three lines create references to the dials we made in the html file.
+    const hourDiv = document.getElementById(&quot;hour-dial&quot;); 
+    const minDiv = document.getElementById(&quot;min-dial&quot;);
+    const secDiv = document.getElementById(&quot;sec-dial&quot;);
+		//The belo three lines retrieve the value of the current hour, minute and second value into three variables.
+    currHour = now.getHours()
+    currMin = now.getMinutes()
+    currSec = now.getSeconds()
+		// set the content of the element with the ID time to the formatted string
+    // also 0 padding is added to the numbers for single digit time values
+    hourDiv.innerHTML = currHour.toString().padStart(2, &#x27;0&#x27;);
+    minDiv.innerHTML = currMin.toString().padStart(2, &#x27;0&#x27;);
+    secDiv.innerHTML = currSec.toString().padStart(2, &#x27;0&#x27;);
+    //Since time changes every second, we make sure this update function is called every second.
+    setTimeout(updateTime, 1000);
+}
+updateTime(); // this function is called as soon as the page is rendered (when script tag is rendered)</code></pre><figure id="9796345b-8615-4609-9641-5856464fb337"><div class="source"><video src="MakingANotionWidget/Screen_Recording_2023-10-01_at_5.05.34_PM.mp4" controls>https://prod-files-secure.s3.us-west-2.amazonaws.com/6665758b-4f9a-4225-a7c5-595132e173db/d1fc6706-9449-4ff2-a194-bbc3709f5e56/Screen_Recording_2023-10-01_at_5.05.34_PM.mov</video></div></figure><p id="f59ea738-18d6-4770-b64e-5ed40bce342c" class="">Now the text colour is visible. Now the font can be changed to suit the clock. <a href="https://fonts.google.com/">https://fonts.google.com/</a> has a large library of fonts. Furthermore, they provide simple steps to add the fonts to your web development related projects. They have also recently updated their site to provide more helpful ways to find a font that fits your needs.</p><p id="d4941d3b-bd05-4ec0-b29a-1c6a4f22c14e" class="">I have chosen the Wallpoet font from google font</p><pre id="f625dad2-39db-42f7-88a7-90e610188154" class="code code-wrap"><code>#hour-dial, #min-dial, #sec-dial {
+	.
+	.
+	.
+	font-family: &#x27;Wallpoet&#x27;, cursive;
+}</code></pre><figure id="67e2a65a-ade9-4bf3-b984-4a767e87e277" class="image"><a href="MakingANotionWidget/Untitled%209.png"><img style="width:278px" src="MakingANotionWidget/Untitled%209.png"/></a></figure><p id="3a5341e8-525e-4770-9fe4-50dceca760b3" class="">However now the text has become larger than the container. So it has to be adjusted.</p><pre id="93667655-5c27-4a5c-825b-576f2b6680a5" class="code code-wrap"><code>--font-size: 2em;
+--dial-size: var(--font-size);</code></pre><p id="7a85282d-7a8a-44f8-8397-f153b53f3f04" class="">Two variables can be defined for the size of the time divs. This again makes it easy to reuse the size.</p><p id="596a4297-505d-4e98-86aa-a1f575512c5e" class="">Then I update the css for the dials.</p><pre id="11c8b384-fb77-4fbf-a5f7-3ad1444c39e9" class="code code-wrap"><code>#hour-dial, #min-dial, #sec-dial {
+    width: var(--dial-size);
+    height: fit-content;
+		...
+}</code></pre><p id="e0f1dfff-29d0-4a56-8495-825035cd84a4" class="">The final clock looks like below: -</p><figure id="39f949c4-333f-45db-b7ff-d275511d2ac6" class="image"><a href="MakingANotionWidget/Untitled%2010.png"><img style="width:336px" src="MakingANotionWidget/Untitled%2010.png"/></a></figure><h1 id="82c5aacc-592a-417d-a8aa-bcbee3ee2e91" class="">Making the Widget</h1><p id="7d48f5e1-bdc5-4588-a137-9fe58873d1a7" class="">To make the widget, we need to first host our html page. This is because, Notion widgets are just like embeddable links. However, only hosted html pages are embeddable. Also, a lot of hosting options are either complicated or expensive and may not be worth using for a project of this small size. So, I have found two simpler ways to host the page solely for the purpose of making this widget.</p><h2 id="6f7376c6-568c-4f4a-96e2-e81f289c1df5" class="">Method 1: Using Github Pages</h2><p id="742a1031-a045-4d6a-aece-c68cec3b502f" class="">Github allows you to host websites directly from you repository through <a href="https://pages.github.com/">Github Pages</a>. This means the pre-requisite for this method is that</p><ol type="1" id="72a35b74-2aab-4036-8566-6563e0cfacf7" class="numbered-list" start="1"><li>You have a Github account.</li></ol><ol type="1" id="b874cdfc-ce91-40d5-a629-15469ef24462" class="numbered-list" start="2"><li>Your HTML code for this widget is pushed to one of your repositories.</li></ol><ol type="1" id="ae1feb62-ffe7-4821-9fe3-1f974abe658e" class="numbered-list" start="3"><li>That repository is public.</li></ol><p id="92dba92a-b5f3-40eb-8749-d574e2d55aa6" class="">I have pre-made a “widget” repository that only has notion widget codes which I use solely for this purpose. So the next step is to push this code to the widget repository.</p><figure id="5eeef185-1292-41fb-bb7d-f625682fc8c3" class="image"><a href="MakingANotionWidget/Untitled%2011.png"><img style="width:528px" src="MakingANotionWidget/Untitled%2011.png"/></a></figure><h3 id="731b9cc9-f12c-4272-948f-96fe59977bec" class="">To host the Page</h3><p id="bce51edc-fcc9-4bd5-8a77-2f2ddcbaa604" class="">For this step, your GitHub repository has to be modified so that it hosts all the directories within it.</p><figure id="06e07dfa-b5de-489d-b90c-6da2d4ea189d" class="image"><a href="MakingANotionWidget/Screenshot_2023-10-01_at_6.44.30_PM.png"><img style="width:672px" src="MakingANotionWidget/Screenshot_2023-10-01_at_6.44.30_PM.png"/></a></figure><p id="3214fdbf-3d46-41eb-b63e-9a8fa8d77101" class="">Navigate to the “pages” section of your repository by going to Settings &gt; Pages. Adjust your settings such that Source is set to “Deploy from a branch” and the Branch is set to “main” and “/root”. Now, anything that is pushed to the repository after these changes will be part of your hosted site. The path to the site will be the site path followed by the path to the file as indicated by your directory structure within the repository.</p><p id="fb4b2ad0-72fb-4990-bd76-b8e3427f1ff8" class="">Follow Github’s quick-start guide to Github Pages here: <a href="https://docs.github.com/en/pages/quickstart">https://docs.github.com/en/pages/quickstart</a></p><p id="bbf756c0-a6bb-4adb-b41b-5175b9c9eb3a" class="">For me the path to my widget is as follows</p><pre id="01f30f34-af68-4b5d-8b2c-a141aa762336" class="code code-wrap"><code>&lt;base path to site given by Github&gt;/&lt;repository name&gt;/digitalClock/digitalClock.html</code></pre><p id="0fc920eb-3e8b-4cc5-9085-b2f0db4803d1" class="">So now I can use this path to embed the widget to my notion page just like any other embedding.<div class="indented"><figure id="5476e374-d73f-4b87-a043-4cdb7162a427" class="image" style="text-align:center"><a href="MakingANotionWidget/Screenshot_2023-10-01_at_6.56.15_PM.png"><img style="width:720px" src="MakingANotionWidget/Screenshot_2023-10-01_at_6.56.15_PM.png"/></a></figure></div></p><h2 id="8a4c1b39-60e0-4487-afd4-0d2d697dd167" class="">Method 2: Using apps.simple.ink</h2><p id="07bc7384-93be-4699-91c5-74b3ada80fdf" class="">This website is also known as Notion’s app store. Here you can use other people’s widgets as well as make your own. The caveat is that </p><ol type="1" id="cb030ebb-008d-4889-907f-3055579cca1a" class="numbered-list" start="1"><li>Your <strong>code cannot be longer than 1500 characters</strong> (in my case I have 2414 characters after removing all comments and unnecessary lines). This greatly limits the amount of things you can do in the widget. </li></ol><ol type="1" id="e8aace32-4ef2-415c-865d-76981d98f1a2" class="numbered-list" start="2"><li>You have to restructure your code so that the HTML, CSS and Javascript portions are within one file which may not match how you initially wrote out your code. (Like in my case I wrote them in three different files).</li></ol><p id="217fc38a-cbc5-4206-933d-24f804ab3574" class="">However, if you want to use apps.simple.ink as a way to keep a collection of your widgets anyway, you can use an Iframe which has your widget’s existing hosted link.</p><h3 id="fcd9ac97-4012-4006-b052-a6b693b534cc" class="">Putting your custom widget on apps.simple.ink</h3><ol type="1" id="35d55884-db23-40d6-a26b-841397dfbc90" class="numbered-list" start="1"><li>Go to <a href="http://apps.simple.ink">apps.simple.ink</a> and make an account.</li></ol><ol type="1" id="babae1f3-c891-40a2-b0e0-e680508430ea" class="numbered-list" start="2"><li>Select Custom Widgets<figure id="866ef168-516c-4294-8a12-e4bba821ff62" class="image" style="text-align:center"><a href="MakingANotionWidget/Untitled%2012.png"><img style="width:336px" src="MakingANotionWidget/Untitled%2012.png"/></a></figure></li></ol><ol type="1" id="d8e60581-a162-45d5-811a-ef3ddbc6b1ca" class="numbered-list" start="3"><li>Click on Create new widget</li></ol><figure id="5d9c0cee-923b-4ba7-83d8-5b22e60b552c" class="image"><a href="MakingANotionWidget/Untitled%2013.png"><img style="width:432px" src="MakingANotionWidget/Untitled%2013.png"/></a></figure><ol type="1" id="f9d4397e-efb5-4aca-bb1f-9928796c649b" class="numbered-list" start="4"><li>Add your iframe link in the HTML code part</li></ol><figure id="6bc79c3b-8449-496d-bc91-b1d6ab006175" class="image"><a href="MakingANotionWidget/Untitled%2014.png"><img style="width:672px" src="MakingANotionWidget/Untitled%2014.png"/></a></figure><p id="cd5adb24-a3f0-4da2-9476-4bd300ec0574" class="">If your HTML code is within 1500 characters, you may directly paste the code instead of using the iframe. This website is more useful in those cases.</p><p id="ab6eae4f-45a6-4c6d-b0cb-444f81a9b61c" class="">Now you have an embed link provided to use for your widget</p><figure id="fd97f02c-11f3-4798-8f51-d004bcf7d700" class="image"><a href="MakingANotionWidget/Untitled%2015.png"><img style="width:672px" src="MakingANotionWidget/Untitled%2015.png"/></a></figure><p id="3e6b810f-b9ef-4007-9f1d-0304c55b7961" class="">Again, this method is more useful if you want to make a widget which is not hosted already.</p><h1 id="78f75adf-41d0-43c2-addf-bf3d8de33a6c" class="">Code</h1><figure id="c763bcc9-c9ce-42d0-9ea6-f2e0b2c7a717"><div class="source"><a href="https://gist.github.com/praakhya/4d5b6867b8a3467752b01da70145272c">https://gist.github.com/praakhya/4d5b6867b8a3467752b01da70145272c</a></div></figure><p id="90cdf0e7-b2b6-48a8-b895-35b6cbc54ed7" class="">
+</p></div></article></body></html>
