@@ -1,0 +1,332 @@
+:root {
+    --dark-blue: #324ca0;
+    --light-blue: #00a2ff;
+    --teal: #00a9af;
+    --yellow: #F2FA5A;
+    --default-text-color: white;
+    --monospace: 'Major Mono Display', monospace;
+    --heading: 'Nova Mono', monospace;
+    --body: 'Inconsolata', monospace;
+    --a4-width: 2480px;
+    --a4-height: 3509px;
+    --heading-size: 500px;
+    --sub-heading-size: 20px;
+    --body-size: 18px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--light-blue);
+    background-image: linear-gradient(transparent 2%, var(--dark-blue));
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.back-home {
+
+    top: 1em;
+    left: 1em;
+
+}
+
+.back-home,
+.save-pdf {
+    position: fixed;
+    border-radius: 1em;
+    background: var(--dark-blue);
+    border: none;
+    height: 3em;
+    width: 3em;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.back-home:hover,
+.save-pdf:hover {
+
+    background: var(--light-blue);
+}
+
+.back-home>span {
+    color: white;
+}
+
+.save-pdf {
+    top: 1em;
+    right: 1em;
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+
+}
+
+.save-pdf:hover::before {
+    content: "  Save as PDF";
+    color: white;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0%;
+        width: fit-content;
+    }
+
+    to {
+        opacity: 100%;
+        width: fit-content
+    }
+
+}
+
+.save-pdf>span {
+    color: white;
+}
+
+.page {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5em;
+
+}
+
+
+
+.heading {
+    color: white;
+    background-color: var(--dark-blue);
+    padding: 1em;
+    font-size: x-large;
+    width: 100%;
+}
+
+.heading.label {
+    font-weight: bold;
+}
+
+.contact-info {
+    background-color: var(--dark-blue);
+
+    width: 95vw;
+    padding-left: 5vw;
+    padding-top: 3vh;
+    padding-bottom: 2vh;
+    min-height: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info>table {
+    color: white;
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contact-info.label {
+    font-weight: bold;
+}
+
+.contact-info-link {
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 0em;
+
+}
+
+.contact-info-link:visited {
+    color: var(--yellow);
+}
+
+.contact-info-link:link {
+    color: white;
+}
+
+.contact-info-link:hover {
+    color: var(--teal);
+}
+
+
+
+.subheading {
+    color: var(--dark-blue);
+
+}
+
+.content {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: x-large;
+    width: 90%;
+}
+
+th,
+td {
+    text-align: left;
+}
+
+#skill-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.skill-chip {
+    border-radius: 1em;
+    border: 1px solid var(--dark-blue);
+    font-family: Arial, Helvetica, sans-serif;
+    width: fit-content;
+    padding: 0.25em;
+    font-size: 0.75em;
+}
+
+.project-title {
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+a#projects {
+    text-decoration: none;
+
+}
+
+a#projects:visited {
+    color: var(--dark-blue);
+}
+
+a#projects:link {
+    color: black;
+}
+
+a#projects:hover {
+    color: var(--teal);
+}
+
+
+@media print {
+    @page {
+        margin-top: 50px;
+        margin-left: 0;
+        margin-right: 0;
+        /*size: 7in 9.25in;*/
+    }
+
+    @page :first {
+        margin-top: 0;
+    }
+
+    .back-home {
+        visibility: hidden;
+    }
+
+
+    .save-pdf {
+        visibility: hidden;
+        color: white;
+    }
+
+
+
+    .contact-info {
+        color: white;
+        -webkit-print-color-adjust: exact;
+        background-color: var(--dark-blue) !important;
+        font-size: 12px;
+        width: width(--a4-width);
+        height: 10vh;
+        overflow: hidden;
+        
+    }
+    .contact-info > .label {
+        font-weight: bold;
+    } 
+
+    .contact-info-link {
+        text-decoration: none;
+        font-size: 18px;
+
+        color: var(--white);
+    }
+
+    .contact-info-link:visited {
+        color: var(--white);
+    }
+
+    .contact-info-link:active {
+        color: var(--white);
+    }
+
+    .contact-info-link:link {
+        color: var(--white);
+    }
+
+    .content {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: var(--body-size);
+        width: 90%;
+        height: fit-content;
+        /*-webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+        -webkit-column-gap: 1em;
+        -moz-column-gap: 1em;
+        column-gap: 1em;*/
+        padding-top: 3vh;
+        display:block;
+        columns:2 40vw;
+        gap:1 rem;
+    }
+
+    .content.subheading {
+        color: var(--dark-blue);
+        font-size: var(--heading-size);
+
+    }
+
+    .project-title {
+        text-transform: capitalize;
+        font-size: var(--sub-heading-size);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    th,
+    td {
+        text-align: left;
+    }
+
+    #skill-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+
+    .skill-chip {
+        border-radius: 1em;
+        border: 1px solid var(--dark-blue);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+
+    a#projects,
+    a#projects:visited,
+    a#projects:link,
+    a#projects:active {
+        text-decoration: none;
+        color: var(--dark-blue);
+
+    }
+
+    #projects {
+        font-size: 12px;
+        height: fit-content;
+    }
+
+}

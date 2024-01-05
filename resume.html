@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Resume</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="./resume.css"/>
+    </head>
+    <body onload="render()">
+        <script src="resume.js"></script>
+        <button class="back-home" onclick="goToHome()">
+            <span class="material-symbols-outlined">
+                home
+            </span>
+        </button>
+        <button class="save-pdf" onclick="savePdf()">
+            <span class="material-symbols-outlined">
+                picture_as_pdf
+            </span>
+        </button>
+        <div class="page" #exportPDF>
+            <div class="contact-info">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <td>Praakhya Avasthi</td>
+                    </tr>
+                    <tr>
+                        <th>Email-ID</th>
+                        <td><a href="mailto:praakhya@avasthi.com" class="contact-info-link">praakhya&#64;avasthi.com</a></td>
+                    </tr>
+                    <tr>
+                        <th>Linkedin</th>
+                        <td><a href="https://www.linkedin.com/in/praakhyaavasthi/" class="contact-info-link">
+                                https://www.linkedin.com/in/praakhyaavasthi/</a></td>
+                    </tr>
+        
+                </table>
+            </div>
+            <div class="content">
+                <h1 class="subheading">Skills</h1>
+                <hr>
+                <div id="skill-list">
+                </div>
+                <h1 class="subheading">Projects</h1>
+                <hr>
+                <div id="projects">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

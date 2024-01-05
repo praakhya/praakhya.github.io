@@ -1,0 +1,118 @@
+:root {
+    --dark-blue: #324ca0;
+    --light-blue: #00a2ff;
+    --teal: #00a9af;
+    --yellow: #F2FA5A;
+    --default-text-color: white;
+    --monospace: 'Major Mono Display', monospace;
+    --heading: 'Nova Mono', monospace;
+    --body: 'Inconsolata', monospace;
+    --a4-width: 2480px;
+    --a4-height: 3509px;
+    --heading-size: 4em;
+    --sub-heading-size: 20px;
+    --body-size: 18px;
+}
+body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--light-blue);
+    background-image: linear-gradient(transparent 2%, var(--dark-blue));
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid red;
+}
+.back-home {
+    top: 1em;
+    left: 1em;
+    position: fixed;
+    background-color: transparent;
+    width: fit-content;
+    border: none;
+    border-radius: 1em;
+    color: var(--default-text-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    background-color: var(--light-blue);
+    box-shadow: rgba(255, 255, 255, 0.4) 0px 2px 4px, rgba(255, 255, 255, 0.3) 0px 7px 13px -3px, rgba(255, 255, 255, 0.6) 0px -3px 0px inset;
+}
+.back-home:hover::before {
+    content: "Go back to Home ";
+    color: white;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    font-family: var(--body);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0%;
+        width: fit-content;
+    }
+
+    to {
+        opacity: 100%;
+        width: fit-content
+    }
+
+}
+
+.back-home>span {
+    color: white;
+}
+
+
+#title {
+    font-size: var(--heading-size);
+    font-family: var(--heading);
+
+}
+body {
+    color: var(--default-text-color);
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+.page-link {
+    display: block;
+    text-decoration: none;
+    font-family: var(--body);
+    font-size: 20px;
+    box-shadow: rgba(255, 255, 255, 0.4) -5px 5px, rgba(255, 255, 255, 0.3) -10px 10px, rgba(255, 255, 255, 0.2) -15px 15px, rgba(255, 255, 255, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+    height: fit-content;
+    border-radius: 1em;
+    width: 80vw;
+    height: 20vh;
+    color: var(--default-text-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1em;;
+}
+.page-link:hover {
+    color: var(--light-blue);
+    box-shadow: rgba(50, 76, 160,0.4) -5px 5px, rgba(50, 76, 160, 0.3) -10px 10px, rgba(50, 76, 160, 0.2) -15px 15px, rgba(50, 76, 160, 0.1) -20px 20px, rgba(50, 76, 160, 0.05) -25px 25px;
+    background-color: var(--default-text-color);
+    font-weight: bold;
+}
+#page-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+}
+.link-img {
+    height: inherit;
+    
+}

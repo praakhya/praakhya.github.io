@@ -1,0 +1,186 @@
+@import url("./styles.css");
+
+
+.about-page {
+    background-color: var(--light-blue);
+    width: calc(100vw - 4em);
+    overflow-y: hidden;
+    color: white;
+    font-family: var(--body);
+    padding: 2em;
+    min-height: calc(100vh - 4em);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about {
+    width: 80%;
+}
+h1.about {
+    font-family: var(--heading);
+    text-transform: uppercase;
+}
+
+.para {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5em;
+    gap: 1em;
+    align-items: center;
+    height: fit-content;
+    max-width: 80vw;
+    border-radius: 1em;
+    overflow: hidden;
+    padding: 1em;
+    position: relative;
+}
+
+h1.para {
+    font-family: var(--heading);
+}
+
+
+
+.content.para {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.align-left {
+    flex-direction: row;
+}
+
+.align-right {
+    flex-direction: row-reverse;
+}
+
+.para:hover {
+    animation-name: invert-color;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+
+}
+
+@keyframes invert-color {
+    from {
+        background-color: var(--light-blue);
+        color: white;
+    }
+
+    to {
+        background-color: white;
+        color: var(--light-blue);
+        background: rgb(255, 255, 255);
+        box-shadow: 0px 29px 57px -11px rgba(0, 0, 0, 0.41);
+    }
+
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5em;
+    height: 2em;
+    overflow: hidden;
+    border: 1px solid white;
+    border-radius: 1em;
+    color: white;
+    text-decoration: none;
+    align-self: flex-start;
+}
+
+.button:hover {
+    box-shadow: 0 0 .2rem #fff,
+        0 0 .2rem #fff;
+    text-shadow: 0 0 .1rem #fff,
+        0 0 .1rem #fff;
+
+}
+
+.icon {
+    height: 1em;
+}
+.gdriveVideo {
+    width: 30%;
+}
+
+.code {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    font-weight: lighter;
+
+}
+
+.code:hover::before {
+    content: "View source code";
+    font-family: 'Courier New', Courier, monospace;
+}
+.code-bracket {
+    border: 1px solid red;
+    
+}
+.code-bracket:hover {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    background-color: var(--light-blue);
+    border-radius: 1em;
+    padding-left: 0.5em;
+    animation: animate-fade 0.4s ease 0s 1 normal forwards;
+}
+
+@keyframes animate-fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.carousel {
+    width: 100%;
+    height: 50vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#carousel-image {
+    width: 50vw;
+    transition: ease-in-out;
+    align-self: center;
+}
+
+#rotate {
+    position: fixed;
+	bottom: 0%;
+    right: 0%;
+	transform: translatex(-50%) translatey(-50%);
+    z-index: 1; 
+    -webkit-filter: drop-shadow(1px 3px 2px var(--dark-blue));
+
+
+    /* position: fixed;
+    make sure it stays put so we can see it!
+    animation: rotate 3s linear infinite;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+    height: 15%;
+    -webkit-filter: drop-shadow(1px 3px 2px var(--dark-blue));
+    z-index: 1; */
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}

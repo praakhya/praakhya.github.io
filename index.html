@@ -2,35 +2,161 @@
 
 <head>
     <title>Home</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./about.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
+
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 </head>
 
 <body>
-    <div id="cover-container">
-        <div id="cover-text">
-            <h1 id="title">Hello World</h1>
-            <p id="byline">Designed and written by Praakhya Avasthi</p>
-            <span class="material-symbols-outlined dropdownbtn">
-                expand_more
-            </span>
-        </div>
-        <br>
-        <div id="cover">
-            <img id="cover-img" src="images/cover.jpg" />
+    <div class="nav" onmouseleave="hideToc()">
+        <div id="table-of-contents">
+            <a class="row" href="resume.html">📄 My Resume</a>
+            <a class="row" href="interestingThings.html">? Some Interesting Things</a>
         </div>
     </div>
-    <div id="pages">
-        <div class="page">
-            <a href="./docs/SongExtraction/SongExtraction.html" class="page-text">Extracting list of Songs from YT Music</a>
+    <div class="page">
+
+        <span class="material-symbols-outlined menu" onclick="showToc()">
+            expand_more
+        </span>
+        <div class="header">
+            <h1>
+                Welcome
+            </h1>
+            <h4>
+                to my home on the internet...
+            </h4>
         </div>
-        <div class="page">
-            <a href="./docs/MakingANotionWidget/MakingANotionWidget.html" class="page-text">Making a Custom Notion Widget</a>
+        <div class="about">
+            <div class="bold-head">Hi, I am <span class="bold">Praakhya</span>!</div>
+            <hr class="divider" />
+            <p>I am a 3rd year B.Tech student that is interested in all things technology and art. On this website I
+                share
+                some parts of that journey!</p>
         </div>
+        <div class="card-end">
+
+        </div>
+
     </div>
+
+    <div class="about-page">
+        <div class="para">
+            <div class="code-bracket" onclick="goToGit('https://github.com/praakhya/computer-project-class12-maze.git')">
+                <div class="code">
+                    <span class="material-symbols-outlined">
+                        code
+                    </span>
+                </div>
+            </div>
+            <div class="content">
+                <h1>Early beginnings...</h1>
+                <p>As a student of Computer Science in High School I got my first experience with making a program from
+                    scratch that had a database and a UI.</p>
+                <p>We learnt 
+                    <img
+                        src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png"
+                        class="icon" alt=""/> Python and <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png"
+                        class="icon" alt=""/> MySQL at the time. So our project was a game made using pygame that utilised a
+                    local
+                    mysql database for a simple leaderboard.</p>
+            </div>
+            <video class="gdriveVideo" preload="auto" muted autoplay loop playbackRate = 5>
+                <source src="https://drive.google.com/uc?export=download&id=1HeTZ7Y62MIsB3TSOL7rZJNychOLhAXm2"
+                    type='video/mp4'>
+            </video>
+        </div>
+        <div class="para align-right">
+            <div class="code-bracket" onclick="goToGit('https://github.com/praakhya/first-year-computer-project.git')">
+                <div class="code">
+                    <span class="material-symbols-outlined">
+                        code
+                    </span>
+                </div>
+            </div>
+            <div class="content">
+                <h1>Level Up</h1>
+                <p>In the first semester of college I once again learnt Python at a more advance level. I was introduced
+                    to
+                    concepts like OOPs, modularity etc.</p>
+                <p>I also learnt Tkinter which is another way to make UI in Python. As part of our course requirements
+                    we
+                    implemented another game using Tkinter as the UI.</p>
+            </div>
+        </div>
+        <div class="para align-right">
+            <div class="code-bracket" onclick="goToGit('https://github.com/praakhya/second-semester-computer-project.git')">
+                <div class="code">
+                    <span class="material-symbols-outlined">
+                        code
+                    </span>
+                </div>
+            </div>
+            <div class="content">
+                <h1>Something new</h1>
+                <p>The next language I learnt was <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/3/35/The_C_Programming_Language_logo.svg"
+                        class="icon" />. After rigourously using Python for 2 years, switching to C provided with a new
+                    challenge. However, in the end it proved to be a good experience. Though type safety is a concept
+                    that python chooses to avoid, on getting used to it, it can be very useful, specially in debugging.
+                </p>
+                <p>Just as before, we were assigned to make project for this course. We implemented a calculator that
+                    did calculations other than the usual such as base conversions, matrix arithmetic and geomteric
+                    shape metrics.</p>
+            </div>
+        </div>
+        <div class="para align-right">
+            <div class="code-bracket" onclick="goToGit('https://github.com/praakhya/third-semester-webtech-project.git')">
+                <div class="code">
+                    <span class="material-symbols-outlined">
+                        code
+                    </span>
+                </div>
+            </div>
+            <div class="content">
+                <h1>The World of Web Devlopment</h1>
+                <p>In the third semester one of the major projects we were tasked with was a full stack web application.
+                    This was the first time I was introduced to the deeper parts of web development aside from the basic
+                    HTML and CSS we are taught in school.</p>
+                <p>Our course was for learning the MERN stack (MongoDB, ExpressJs, React, NodeJs).</p>
+                <p>As a side product of the project I learnt how to handle JSON files and how servers worked. This was
+                    an interesting project and it provided me with a lot of knowledge that still comes in handy today,
+                    because in today's world a website can be a useful way to communicate with people over the internet.
+                </p>
+                <p>Our project was a book store/ book management application. At that point in time we implemented
+                    simple CRUD operations.</p>
+                <img src="./assets/images/loading.gif" id="carousel-image" alt="Loading" />
+
+            </div>
+
+        </div>
+        <div class="para align-right">
+            <div class="code-bracket" onclick="goToGit('https://github.com/praakhya/carousel.git')">
+                <div class="code">
+                    <span class="material-symbols-outlined">
+                        code
+                    </span>
+                </div>
+            </div>
+            <div class="content">
+                <h1>My First Open Source Contribution</h1>
+                <p>As part of the above web technologies project, I was able to publish an open source React component.
+                </p>
+            </div>
+
+        </div>
+
+        <img src="./assets/images/gear.svg" id="rotate" />
+        <hr>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="about.js"></script>
 </body>
 
 </html>
