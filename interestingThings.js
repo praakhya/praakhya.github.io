@@ -9,6 +9,11 @@ const pages = [
         name: "Making a Custom Notion Widget",
         path: baseUrl + "/MakingANotionWidget/MakingANotionWidget.html",
         cover: "https://images.unsplash.com/photo-1648805777291-a1c45cc26f26?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb"
+    },
+    {
+      name: "Useful Tools for Beginners in Computer Science",
+      path: baseUrl + "/UsefulTools/Useful Tools for Beginners in Computer Science.html",
+      cover: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600"
     }
 ]
 function render() {

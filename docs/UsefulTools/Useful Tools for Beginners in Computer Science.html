@@ -1,0 +1,708 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Useful Tools for Beginners in Computer Science</title><link rel="stylesheet"
+                                                                                                                                                   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+#home {
+  padding: 0.5em;
+  margin: 0.5em;
+  width: fit-content;
+  height: fit-content;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: baseline;
+  background-color: white;
+  border-radius: 3em;
+  position: fixed;
+  top: 1em;
+  left: 1em;
+}
+
+#home-text {
+  text-decoration: none;
+  font-size: 1em;;
+  font-family: var(--roboto);
+}
+
+</style></head><body><article id="764156ca-bae7-414d-8dd3-fdaabef50960" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/cursor-click_green.svg"/></div><h1 class="page-title">Useful Tools for Beginners in Computer Science</h1><p class="page-description"></p></header>
+  <div id="home"><a id="home-text" href="../../interestingThings.html"><span class="material-symbols-outlined">
+	arrow_back
+</span></a></div><div class="page-body"><p id="fb3e2247-1364-4333-b5fb-43d93578c34f" class="">I am currently a third year Computer Science and Engineering student. Throughout the duration of my course there have been many skills I have picked up from the curriculum and otherwise. Along with those skills came some particularly useful tools which made the process of learning and making new things easier. This is a catalog of those tools, in no particular order.</p><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Code Visualiser - Python Tutor</summary><div class="indented"><figure id="4bb8bb5d-4a20-4e88-a3b3-26ccf2a6888d"><a href="https://pythontutor.com/visualize.html#mode=edit" class="block-color-default bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Python Tutor code visualizer: Visualize code in Python, JavaScript, C, C++, and Java</div></div><div class="bookmark-href"><img src="https://pythontutor.com/favicon.ico" class="icon bookmark-icon"/>https://pythontutor.com/visualize.html#mode=edit</div></div></a></figure><p id="ec9995cc-48ec-49af-b932-2d38372ceadd" class="block-color-default"><mark class="highlight-default">This website has a fairly limited but useful purpose of visualising your code execution. It supports languages like Python, C and more. It allows you to key in some lines of code in your language of choice and then it provides a step by step diagrammatic representation of what might actually be happening while that code executed. I found this particularly useful while learning concepts like callbacks, pointers etc.</mark></p></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Online Learning</summary><div class="indented"><h2 id="26b9b4df-78cb-40fd-bce5-33b173e0a65e" class="block-color-default"><mark class="highlight-default">Neso Academy </mark></h2><figure id="2391a93e-e890-4763-a8f0-cee57cedd435"><a href="https://youtube.com/@nesoacademy?si=LpZzqjI76OVQjfOk" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Neso Academy</div><div class="bookmark-description">#RedefiningEducation  Embarking on a mission to make education accessible, we strive to offer free and subsidized learning opportunities. Our belief resonates with the notion that the true world of knowledge extends beyond the confines of expensive institutions. Dedicated to supporting you in every conceivable way, we take a small but impactful step towards educating the world. Together, let&#x27;s redefine education and empower individuals on their educational odyssey. Join us and become an integral part of our creative community.  Explore our diverse offerings:  ► Engineering Lectures  ► Competitive Exam Preparation  &quot;Everyone is unique and talented; all you require are passion and curiosity.&quot;  ~WE&#x27;RE HIRING~ https://www.nesoacademy.org/careers  ~DOWNLOAD THE APP~ https://play.google.com/store/apps/details?id=org.nesoacademy  For enquiries:  nesoacademy@gmail.com</div></div><div class="bookmark-href"><img src="https://www.youtube.com/s/desktop/d133835b/img/favicon_144x144.png" class="icon bookmark-icon"/>https://youtube.com/@nesoacademy?si=LpZzqjI76OVQjfOk</div></div><img src="https://yt3.googleusercontent.com/ytc/AIf8zZTDWxGp4St40CQLq1PzeMedUv6H7IJ968odDRix=s900-c-k-c0x00ffffff-no-rj" class="bookmark-image"/></a></figure><p id="5ea28723-a5a7-4589-8ff5-17fdcde242fb" class=""><mark class="highlight-default">This particular youtube channel has a wide variety of lectures in topics of computer science. I found this channel while learning data structures for the first time. However, their videos were most useful for Computer Architecture and Microprocessing related subjects.</mark></p><p id="b8fa1969-f7f3-4be2-8bab-3cb6649ff49e" class=""><mark class="highlight-default">Like any mode of learning this is not guaranteed to suit everyone or every situation.</mark></p><h2 id="52a7ff86-e35d-44ac-b0aa-a43777e69af4" class="block-color-default"><mark class="highlight-default">MIT Open Courseware</mark></h2><figure id="98d40110-adde-4216-90a5-558c014d74fe"><a href="https://ocw.mit.edu/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">MIT OpenCourseWare | Free Online Course Materials</div><div class="bookmark-description">MIT OpenCourseWare is a web based publication of virtually all MIT course content. OCW is open and available to the world and is a permanent MIT activity</div></div><div class="bookmark-href"><img src="https://ocw.mit.edu/favicon.ico" class="icon bookmark-icon"/>https://ocw.mit.edu/</div></div><img src="https://ocw.mit.edu/static_shared/images/ocw_logo_orange.202255b67af1a72a1f52.png" class="bookmark-image"/></a></figure><p id="1a861de5-a6a9-4821-8c31-56b7144764c7" class=""><mark class="highlight-default">This platform is a highly useful one which houses a vast collection of real-time lectures from the MIT campus. Along with videos they provide worksheets and problem sets for each lecture for extra practice. To get a strong and complete understanding of any topic, this is a very good online destination.</mark></p><h2 id="3864082a-0dcf-445f-9ae6-7669c986d781" class="block-color-teal"><mark class="highlight-default">HTML &amp; CSS - Interneting is Hard</mark></h2><figure id="62dd746f-8427-44d7-8626-8ef06ac14022"><a href="https://internetingishard.netlify.app/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Interneting Is Hard</div><div class="bookmark-description">Friendly web development tutorials for complete beginners</div></div><div class="bookmark-href"><img src="https://internetingishard.netlify.app/favicon-192-a6e5b6.e908610d.png" class="icon bookmark-icon"/>https://internetingishard.netlify.app/</div></div></a></figure><p id="1b9699a9-e50c-43ab-8644-497656adb334" class=""><mark class="highlight-default">This website is a good precursor to beginning the web development journey. Though web development has many phases other than the front end, HTML and CSS is an integral part of the learning journey for web dev. This website makes it much easier to understand the intricacies of both technologies and is just a great confidence booster for a first time learner. Having the knowledge that it provides just makes it easier to focus on other parts while developing a web application without second guessing the syntax and semantics of plain HTML and CSS.</mark></p><h2 id="f66e4ae8-0649-42a1-b612-593356f3df33" class="block-color-gray"><mark class="highlight-default">Computer networks - Jim Kurose</mark></h2><figure id="b223a8f6-15bd-4bbd-9b29-32ac6da5ee72"><a href="https://gaia.cs.umass.edu/kurose_ross/index.php" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Jim Kurose Homepage</div><div class="bookmark-description">Welcome to the authors&#x27; website for the textbook,Computer Networking: a Top Down Approach (Pearson). The 8th edition of our textbook has been published in the spring of 2020 - find out  what&#x27;s new in the 8th edition. From this page here (check out the menu at the top of the page), you can find resources and information of interest to students, teachers, and readers alike.</div></div><div class="bookmark-href">https://gaia.cs.umass.edu/kurose_ross/index.php</div></div></a></figure><p id="addfc22f-95a0-468d-b011-b3232bb17515" class=""><mark class="highlight-default">Learning how computer networking works can be difficult because it involves certain convoluted concepts which often need detailed practice and explanation to really drive the concept home. Jim Kurose from University of Massachusetts Amherst has written a really good book for first time learners of computer networks. Whats more is that all concepts are supported with online practice questions along with solutions for more clarity.</mark></p></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Web Development</summary><div class="indented"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><mark class="highlight-default">CSS Flex box - A Complete Guide to Flex Box</mark></summary><div class="indented"><figure id="f726c443-6f89-405f-81f3-b16d4cb7b5fc"><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" class="block-color-default bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">A Complete Guide to Flexbox | CSS-Tricks</div><div class="bookmark-description">Our comprehensive guide to CSS flexbox layout. This complete guide explains everything about flexbox, focusing on all the different possible properties for the parent element (the flex container) and the child elements (the flex items). It also includes history, demos, patterns, and a browser support chart.</div></div><div class="bookmark-href"><img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2021/07/star.png?fit=180%2C180&amp;ssl=1" class="icon bookmark-icon"/>https://css-tricks.com/snippets/css/a-guide-to-flexbox/</div></div><img src="https://css-tricks.com/wp-json/social-image-generator/v1/image/21059" class="bookmark-image"/></a></figure><p id="7932ef0a-9619-4d16-8430-c91a60ce2356" class="block-color-default"><mark class="highlight-default">Anyone who has worked with CSS would be aware that elements on a page can be arranged using </mark><mark class="highlight-default"><code>grid</code></mark><mark class="highlight-default">, </mark><mark class="highlight-default"><code>table</code></mark><mark class="highlight-default"> , </mark><mark class="highlight-default"><code>flex</code></mark><mark class="highlight-default"> layouts etc. However, </mark><mark class="highlight-default"><code>flex</code></mark><mark class="highlight-default"> being a newer technology and more flexible is much easier to use. It allows you to make quite complex layouts which are also flexible. The best part is, most things that can be achieved using </mark><mark class="highlight-default"><code>grid</code></mark><mark class="highlight-default">s and </mark><mark class="highlight-default"><code>table</code></mark><mark class="highlight-default">s can also be accomplished by a </mark><mark class="highlight-default"><em>flexbox</em></mark><mark class="highlight-default">. This website gives a succinctly put together guide for everything related to flex boxes with very clear images. </mark></p></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><mark class="highlight-default">Color Palettes - Colorhunt</mark></summary><div class="indented"><figure id="75b94302-4358-4404-bc1e-c2d114b5273c"><a href="https://colorhunt.co/palettes/space" class="block-color-default bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Space Color Palettes - Color Hunt</div><div class="bookmark-description">Discover beautiful space color palettes on Color Hunt. A curated collection of great color palettes for designers and artists.</div></div><div class="bookmark-href"><img src="https://colorhunt.co/img/color-hunt-icon-ios.png" class="icon bookmark-icon"/>https://colorhunt.co/palettes/space</div></div><img src="https://colorhunt.co/img/color-hunt-og.png" class="bookmark-image"/></a></figure><p id="ae772705-6d4c-42d8-bd30-d46f705a24cf" class="block-color-default"><mark class="highlight-default">While designing any software while the functionality of the inherent application is important, the look and feel of the application also decides how customers favour the application. The colour scheme is one part of the interface which should be pleasant to look at. This website provides a wide range of colours with various tags to filter choices from to get the exact colour scheme you wish to use.</mark></p></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><mark class="highlight-default">Google Fonts</mark></summary><div class="indented"><p id="ea3b6b65-9d96-4e34-b7f5-06c4ea0e1295" class="block-color-default"><mark class="highlight-default">In any documentation or any website, the fonts used give a distinct personality to the presented content that might even become attached to their brand image. Thus, the choice of font is an important one to make. Google fonts is easy to use and embed in a void variety of projects. They have good filters for picking the style of your choice. Along with fonts, they also provide various symbols that can aid the textual content.</mark></p><figure id="107087bb-d77f-417e-9213-94bfeefe710d"><a href="https://fonts.google.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Browse Fonts - Google Fonts</div><div class="bookmark-description">Making the web more beautiful, fast, and open through great typography</div></div><div class="bookmark-href"><img src="https://www.gstatic.com/images/branding/product/2x/google_fonts_96dp.png" class="icon bookmark-icon"/>https://fonts.google.com/</div></div><img src="https://www.gstatic.com/images/icons/material/apps/fonts/1x/catalog/v5/opengraph_color.png" class="bookmark-image"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><mark class="highlight-default">Design Systems</mark></summary><div class="indented"><p id="e450b89b-131e-4116-a53f-cf265cf59299" class="block-color-default"><mark class="highlight-default">Any web page’s design follows an underlying set of rules that is apparent on sufficient inspection. Though this seems trivial, it is actually very important. Design flaws in a page should not distract a viewer from the content.</mark></p><p id="c71d21ef-03b9-499e-b22f-fb30422e5bcc" class=""><mark class="highlight-default">However, all engineers may not want to spend time in constructing their own set of rules from scratch and then coming up with complete CSS for it. This is where the systems mentioned below become useful. They provide components with their own set rules which developers can utilise.</mark></p><h3 id="c5cd361c-9175-448c-b5c0-2515f0c947bc" class=""><mark class="highlight-default">Material Design</mark></h3><figure id="eda4412a-74d1-4990-8cc4-cf708f90cd5c"><a href="https://m3.material.io/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Material Design</div><div class="bookmark-description">Build beautiful, usable products faster. Material Design is an adaptable system—backed by open-source code—that helps teams build high quality digital experiences.</div></div><div class="bookmark-href"><img src="https://m3.material.io/static/assets/m3-favicon.ico" class="icon bookmark-icon"/>https://m3.material.io/</div></div><img src="https://m3.material.io/static/assets/m3-social.jpg" class="bookmark-image"/></a></figure><p id="78c4304a-cceb-470f-8976-9b6f4c51f718" class=""><mark class="highlight-default">This design system is provided by Google. So, if you require your application to look akin to Google’s design and aesthetic, this design system is the one to use.</mark></p><p id="ea08adaa-07db-475e-8f33-88a78b6d7bbd" class=""><mark class="highlight-default">Since it is provided by google it is best supported in Angular (which is also a google creation). However, there are provisions for using it in frameworks such as React too.</mark></p><figure id="aea5a96e-1717-4f14-afdd-7a4693bf88ab"><a href="https://mui.com/material-ui/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Material UI: React components that implement Material Design</div><div class="bookmark-description">Material UI is an open-source React component library that implements Google&#x27;s Material Design. It&#x27;s comprehensive and can be used in production out of the box.</div></div><div class="bookmark-href"><img src="https://mui.com/static/icons/180x180.png" class="icon bookmark-icon"/>https://mui.com/material-ui/</div></div><img src="https://mui.com/static/social-previews/materialui-preview.jpg" class="bookmark-image"/></a></figure><h3 id="35190d76-3e19-42b7-a967-740ddceee98d" class="block-color-teal"><mark class="highlight-default">Bootstrap</mark></h3><p id="b674282d-48ab-4b35-b437-9756292a9237" class=""><mark class="highlight-default">This design language was created at Twitter. It looks significantly different from Google’s design system however it provides a pleasing minimalistic aesthetic.</mark></p><p id="ddd21c81-7976-4184-838b-31945318f7fe" class=""><mark class="highlight-default">It does not particularly gate-keep its accessibility like material design might seem to do for non-google frameworks so it might be suitable for other web dev stacks.</mark></p><p id="a50792ef-0957-4a77-831a-51c642d03338" class=""><mark class="highlight-default">However there are certain components that are better implemented in Material Design than in Bootstrap and vice versa.</mark></p><figure id="49acace0-da1d-4f8d-8a71-e111b085d00a"><a href="https://getbootstrap.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Bootstrap</div><div class="bookmark-description">Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.</div></div><div class="bookmark-href"><img src="https://getbootstrap.com/docs/5.3/assets/img/favicons/apple-touch-icon.png" class="icon bookmark-icon"/>https://getbootstrap.com/</div></div><img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-social.png" class="bookmark-image"/></a></figure></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Version Control - Github</summary><div class="indented"><figure id="b9783511-8eb4-4109-aaaf-b121f18a114d"><a href="https://github.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">GitHub: Let’s build from here</div><div class="bookmark-description">GitHub is where over 100 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and fea...</div></div><div class="bookmark-href"><img src="https://github.com/fluidicon.png" class="icon bookmark-icon"/>https://github.com/</div></div><img src="https://github.githubassets.com/assets/campaign-social-031d6161fa10.png" class="bookmark-image"/></a></figure><p id="918b83d2-ab5a-4a52-b157-852e8aad8ca4" class=""><mark class="highlight-default">This tool is widely used in enterprises as it provides one of the most important features in a long term project - Version Control. With version control, all versions of changes made to files can be stored. So if you make a mistake, you can just revert back to the last good version.</mark></p><p id="0d951955-a457-4dab-9af3-a3cd83a5bcee" class=""><mark class="highlight-default">If you can understand the technicality behind Git and services like Gitlab, Github, etc. this can be used for version control of any type of files used in any field and it is quite useful to track the history and progress of long projects.</mark></p></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Typing Diagrams - Mermaid Js</summary><div class="indented"><figure id="18e3b182-9153-4958-a936-dd51161a41b3"><a href="https://mermaid.js.org/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Mermaid | Diagramming and charting tool</div><div class="bookmark-description">Create diagrams and visualizations using text and code.</div></div><div class="bookmark-href"><img src="https://mermaid.js.org/favicon.ico" class="icon bookmark-icon"/>https://mermaid.js.org/</div></div></a></figure><p id="96e10479-c70b-4323-9582-1e8468bf706d" class=""><mark class="highlight-default">As in any field, more often than not one has to represent a system’s structure in the form of flow-charts or other diagrams to be able to put across information faster, and in a organised fashion. </mark></p><p id="ce50bcb5-086d-4758-b148-52fba7e9ab40" class=""><mark class="highlight-default">If you are comfortable with typing out your instructions rather than dragging dropping squares and circles onto a canvas, Mermaid Js is perfect. It provides simple syntax to be able to type instructions to draw a figure rather then actually build it using a user interface!</mark></p><p id="f02b3683-a969-4ef2-bfc1-d3a501d41a8b" class=""><mark class="highlight-default">Whats more is it is supported in markdown files so Github Readme’s can also utilise mermaid Js to make your repositories attractive.</mark></p></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Documentation</summary><div class="indented"><h2 id="07e65ae0-a169-4388-8ca9-6fcbf77cc604" class="block-color-default"><mark class="highlight-default">README - Markdown</mark></h2><figure id="94cbdf24-f764-4cca-bc58-9884325f42e6"><a href="https://markdownguide.org/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Markdown Guide</div><div class="bookmark-description">A free and open-source reference guide that explains how to use Markdown.</div></div><div class="bookmark-href"><img src="https://www.markdownguide.org/assets/favicons/apple-touch-icon.png" class="icon bookmark-icon"/>https://markdownguide.org/</div></div><img src="https://www.markdownguide.org/assets/images/markdown-guide-og.jpg" class="bookmark-image"/></a></figure><p id="ca6c135f-9d94-42c6-a57f-3a6465873f62" class="block-color-gray"><mark class="highlight-default">As projects get larger and more contributors join the project, documentation has to increase so that all the people in a project can be on the same page before making big changes or additions to existing components.</mark></p><p id="8b6b6d80-1248-4796-9c61-6cd8875e0d1e" class="block-color-gray"><mark class="highlight-default">In technical documentation the content obviously requires more focus than how it looks. A regular developer should not have to bother with page widths, text colours, fonts etc. while writing a document explaining the components of a project for fellow developers.</mark></p><p id="12a7722c-f8c6-4bce-93a0-0a0acbd9c1fd" class="block-color-gray"><mark class="highlight-default">Thats where </mark><mark class="highlight-default"><strong>markdown</strong></mark><mark class="highlight-default"> comes in. Markdown was developed as a much more readable version of existing “markup” languages such as HTML, XHTML where the information is enclosed in tags making the text formatting heavy.</mark></p><p id="00168898-f845-49b3-9cb7-7ca8f5158681" class="block-color-gray"><mark class="highlight-default">Now markdowns are very commonly used in “Readme” files of projects. They provide very simple formatting that aids the information representation without taking over completely.</mark></p><p id="20bf1963-37a6-4d27-9d57-6e902d0a8cac" class="block-color-gray"><mark class="highlight-default">It supports several features like code blocks, formatted headings etc. making it useful for technical writing in any field.</mark></p><h2 id="5c801a5e-af82-4a7b-a48c-79d91154b9e6" class="block-color-gray"><mark class="highlight-default">Equations - Latex</mark></h2><figure id="a1d641a9-73a6-458a-807f-d220ed0c7b06"><a href="https://www.latex-project.org/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">LaTeX - A document preparation system</div><div class="bookmark-description">LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation.</div></div><div class="bookmark-href"><img src="https://www.latex-project.org/favicon.ico" class="icon bookmark-icon"/>https://www.latex-project.org/</div></div></a></figure><p id="2b92ed44-1271-4920-869d-5e3b681658ff" class="block-color-gray"><mark class="highlight-default">When the famous Donald Knuth went out to publish the second edition of his paper “</mark><mark class="highlight-default"><em>The Art of Computer Programming”</em></mark><mark class="highlight-default"> he set out to create a new digital typography system that could match the typesetting technique used in the publishing of the first edition. This became “Tex” as described in a memo he wrote. Later on, a markup language called Latex was developed on this. </mark></p><p id="488e25fb-b9bb-4acd-a62e-276ace0c00f2" class="block-color-gray"><mark class="highlight-default">The point of the language was to be able to type out mathematic and scientific notation with ease. Most technical papers written today use this format sometimes through online editors such as </mark><mark class="highlight-default"><a href="https://www.overleaf.com/">Overleaf</a></mark><mark class="highlight-default">.</mark></p><p id="4e33fac1-d2c6-4da7-93cb-a9919ccc4d98" class="block-color-gray"><mark class="highlight-default">Even markdown documents allow addition of latex blocks. Thus, it is highly useful to get equipped with this language to speed up technical writing especially when using complex symbols and equations.</mark></p></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Text Editors</summary><div class="indented"><p id="d71cb9d3-4a16-4532-9bf1-c6eb612c48a4" class="block-color-default"><mark class="highlight-default">Finally, most of the work of a Computer Science student happens on a text editor of some kind. For those well versed in the workings of Unix shells it may be in editors such as vi or emacs for others it may be the widely popular editors such as VS Code, IntelliJ, Sublime Text etc.</mark></p><p id="17033082-4708-4d32-822d-beefcba16560" class="block-color-default"><mark class="highlight-default">The purpose of a </mark><mark class="highlight-default"><em>good</em></mark><mark class="highlight-default"> text editor is to be able to construct your program easily, while being able to follow all the constructs of the language of your choice. A text editor that works always, consistently is better than one with a hoard of features and frequent failures and confusions.</mark></p><p id="806a6c35-7486-4db1-ac51-53af8df9d1e0" class="block-color-default"><mark class="highlight-default">All the above points make the choice of text editor very personal. However, these are the factors I noticed in editors that I used</mark></p><h2 id="8cfb99bb-10aa-4c2a-a73f-8428884772c4" class="block-color-default"><mark class="highlight-default">VS Code</mark></h2><figure id="4555a951-e5ca-44e3-a362-6ebfbba286b0"><a href="https://code.visualstudio.com/" class="block-color-default bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://code.visualstudio.com/</div></div></a></figure><p id="c5708e6d-6547-4b85-83f5-6936f2332175" class="block-color-default"><mark class="highlight-default">My first language was Python. So I started on the default IDLE provided on the installation of Python. Very quickly I grew comfortable with it and moved on to VS Code.</mark></p><p id="907a0b54-d327-4440-afb1-fc52be7648a3" class="block-color-default"><mark class="highlight-default">VS Code is a very good editor for programmers writing their first ever programs. It provides a very nicely packed environment with as many features inbuilt as possible so that a beginner can focus on becoming comfortable with a new language or framework before understanding how various subsystems interact with each other, or how files are built etc.</mark></p><ul id="f249ca47-a35d-40f5-8f06-a2e064cc9ae7" class="block-color-default bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">For most recognisable languages VS Code has an internal build setup which is hidden behind a clean run button nicely abstracting the complexities of the build process.</mark></li></ul><ul id="dc50a0c1-addd-4691-bdf0-7e7ed8b8f789" class="block-color-default bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">You can make your interface feel at home by customising themes, icons etc. </mark></li></ul><ul id="f3ef5846-2ed5-425f-b3f8-b6fed7e3a0e3" class="block-color-default bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">VS Code tries very hard to make sure that a developer does not need to leave their application to do anything. They have an inbuilt terminal, several community and inbuilt plugins for various technologies, debugging features, version control support, collaboration etc.</mark></li></ul><p id="348b5c26-f3e3-46e0-ac49-32ff8aefbd4c" class="block-color-default"><mark class="highlight-default">VS Code is clearly a “Jack of All Trades”. But that also makes it a “Master of None”. As the complexities of your workflow increase, or if your tech stack is one of the unknown ones, VS Code can fall short.</mark></p><p id="7d425f3a-d26f-46d5-a068-d5530417dd3f" class="block-color-default"><mark class="highlight-default">In general though, VS Code seems to work well with tech stacks using python, javascript or other common frontend frameworks in web development.</mark></p><h2 id="a82b7688-efec-4eaf-bf3e-81cf7ad57c4d" class="block-color-default"><mark class="highlight-default">IntelliJ</mark></h2><figure id="156ae5bf-a934-435a-b924-cbe33e6facc9"><a href="https://www.jetbrains.com/idea/download/?section=mac#:~:text=free%20to%20use-,IntelliJ%20IDEA%20Community%20Edition,-The%20IDE%20for" class="block-color-default bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Download IntelliJ IDEA – The Leading Java and Kotlin IDE</div><div class="bookmark-description">Download the latest version of IntelliJ IDEA for Windows, macOS or Linux.</div></div><div class="bookmark-href"><img src="https://www.jetbrains.com/icon-512.png?r=1234" class="icon bookmark-icon"/>https://www.jetbrains.com/idea/download/?section=mac#:~:text=free%20to%20use-,IntelliJ%20IDEA%20Community%20Edition,-The%20IDE%20for</div></div><img src="https://resources.jetbrains.com/storage/products/jetbrains/img/meta/preview.png" class="bookmark-image"/></a></figure><p id="711ce0ad-f859-44fd-9b9c-ff032b191b7a" class="block-color-default"><mark class="highlight-default">IntelliJ is one of those applications that a beginner does not use. It can be highly intimidating and also works well for a limited tech stack. But, whatever it does, it does absolutely perfectly.</mark></p><ul id="363c2b6e-ff6a-466d-905c-faabdf035433" class="block-color-default bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">The basic community IntelliJ is made for Java and Kotlin. It is also the editor used for major Android App Development. </mark></li></ul><ul id="9b2ccc1e-e236-4e6f-9b84-975add0007b4" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Normally, Java is a language that takes time to understand even if it is the first thing you learn because it introduces the entire world of Object Oriented Design. IntelliJ makes this learning experience more convenient by providing many integrations within for creating Java projects, code completion, code refactoring etc.</mark></li></ul><ul id="d0547dee-9104-4696-93f0-4ccf45037443" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">One of the downfalls of IntelliJ is perhaps its strictness of following the Java project structure. While java programs can technically consist of just a single file that is simply compiled using </mark><mark class="highlight-red"><code>javac</code></mark><mark class="highlight-default"> to get the </mark><mark class="highlight-red"><code>.class</code></mark><mark class="highlight-default"> file, IntelliJ assumes that all programs are structured as projects with the correct directory structure. </mark></li></ul><p id="3b46b335-bf87-47d1-9d11-306cb61ea9ce" class="block-color-default"><mark class="highlight-default">Thus, it is definitely recommended for properly formatted large java projects as it provides all build, test, debugging features, however, not for one or two java files which are not in a well thought-out structure.</mark></p><p id="502614d7-c16e-451f-911d-5a8df90beb9b" class="block-color-default"><mark class="highlight-default">Just like VS Code IntelliJ also provides many community and inbuilt plugins to enhance the workspace.</mark></p><h2 id="5e49dcae-6fe2-4987-a2e6-dc021e90cfda" class="block-color-default"><mark class="highlight-default">The Originals - </mark><mark class="highlight-red"><code>emacs</code></mark><mark class="highlight-default"> &amp; </mark><mark class="highlight-red"><code>vi</code></mark></h2><figure id="53448e12-154a-4641-b446-369affa7ad7d"><a href="https://www.gnu.org/software/emacs/download.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">GNU Emacs download - GNU Project</div><div class="bookmark-description">Emacs runs on several operating systems regardless of
+			the machine type. The main ones are: GNU, GNU/Linux,
+			FreeBSD, NetBSD, OpenBSD, MacOS, MS Windows and Solaris.</div></div><div class="bookmark-href"><img src="https://www.gnu.org/software/emacs/favicon.png" class="icon bookmark-icon"/>https://www.gnu.org/software/emacs/download.html</div></div></a></figure><p id="a16172e6-8e0f-43a1-8a1a-df801ca397f1" class="block-color-default"><mark class="highlight-default">The current text editors in the market are definitely successful but their success is nothing compared to their ancestors, </mark><mark class="highlight-red"><code>emacs</code></mark><mark class="highlight-default"> and </mark><mark class="highlight-red"><code>vi</code></mark><mark class="highlight-default">. Both approaching almost half a century since their creation can be utilised within the Unix shell. </mark></p><ul id="8c774b21-d15b-49c7-aff9-65c5b2a51b64" class="block-color-default bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">The various commands that they have created to manipulate text within their editors are very useful across other commands in the Unix environment. </mark></li></ul><ul id="8d4d9324-e335-4b46-9bce-a254aa32e451" class="block-color-default bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">These editors definitely have a learning curve, but understanding them unlocks skills that other new editors seldom provide.</mark></li></ul><ul id="8997b848-9d05-4322-abfb-9d72d725bb2b" class="block-color-default bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">They are very useful when performing complex text manipulation using regex, complex find and replaces etc. But given the existence of new editors today, one does not have to completely rely on them for every job.</mark></li></ul><p id="f529654c-8fd2-45a7-9ddb-750596450caa" class="block-color-default"><mark class="highlight-default">Other than the above mentioned, there still exist many more editors such as Atom, Sublime Text etc. which are also worth exploring.</mark></p></div></details></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
