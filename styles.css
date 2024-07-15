@@ -31,7 +31,7 @@ body {
     overflow-y: scroll;
     color: white;
     font-family: var(--body);
-    overflow-y: scroll;
+    overflow-x: hidden;
     background-image: linear-gradient(transparent 2%, var(--dark-blue));
     z-index: 3;
 }
@@ -80,12 +80,13 @@ p.about {
   align-items: center;
   justify-content: flex-end;
   gap: 1em;
+  height: 5vh;
 
 }
 
 .menu {
-    font-size: 3em !important;
-    text-align: right;
+  font-size: 4vh !important;
+  text-align: right;
   align-self: flex-end;
   border-bottom-left-radius: 100%;
   border-bottom-right-radius: 100%;
@@ -207,7 +208,7 @@ p.about {
 
 .logo {
 
-    height: 2.5em;
+    height: 80%;
 }
 .round {
   border-radius: 100%;
@@ -280,5 +281,12 @@ p.about {
         transform: rotate(360deg);
     }
 }
-
+#rotate {
+  visibility: hidden;
+}
+@media only screen and (min-width: 768px) {
+  #rotate {
+    visibility: visible;
+  }
+}
 /*---------------------------------------------------*/
