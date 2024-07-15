@@ -1,3 +1,5 @@
+@import "styles.css";
+
 :root {
     --dark-blue: #324ca0;
     --light-blue: #00a2ff;
@@ -114,5 +116,5 @@ body {
 }
 .link-img {
     height: inherit;
-    
+
 }

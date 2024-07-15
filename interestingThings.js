@@ -14,6 +14,11 @@ const pages = [
       name: "Useful Tools for Beginners in Computer Science",
       path: baseUrl + "/UsefulTools/Useful Tools for Beginners in Computer Science.html",
       cover: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600"
+    },
+    {
+      name: "A Two Day Build",
+      path: baseUrl + "/ATwoDayBuild/ATwoDayBuild.html",
+      cover: "https://images.unsplash.com/photo-1639431682289-72b9ebb75895?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600"
     }
 ]
 function render() {

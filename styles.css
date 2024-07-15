@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Major+Mono+Display&family=Nova+Mono&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 :root {
     --dark-blue: #324ca0;
     --light-blue: #00a2ff;
@@ -34,6 +34,24 @@ body {
     overflow-y: scroll;
     background-image: linear-gradient(transparent 2%, var(--dark-blue));
     z-index: 3;
+}
+.contact-info-link {
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 0em;
+
+}
+
+.contact-info-link:visited {
+  color: var(--yellow);
+}
+
+.contact-info-link:link {
+  color: white;
+}
+
+.contact-info-link:hover {
+  color: var(--teal);
 }
 .about {
     font-size: 4vh
@@ -224,7 +242,7 @@ p.about {
     background-image: radial-gradient(var(--yellow) 1.1px, transparent 1.1px);
     background-size: 22px 22px;
     width: 100%;
-    
+
 }
 
 .rotate-scroll {

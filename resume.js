@@ -1,11 +1,14 @@
 const skillList = [
     "C",
-    "C++ (basic)",
+    "C++",
+    "Templates in C++",
     "Core Java",
+    "Generics in Java",
     "Python",
     "JavaScript",
     "React",
-    "Angular",
+    "Angular (Angular 13 to 18)",
+    "Typescript",
     "NodeJS",
     "ExpressJS",
     "REST API(Using NodeJs and Spring Framework)",
@@ -20,6 +23,7 @@ const skillList = [
     "JPA",
     "JSON",
     "XML",
+   "HTML", "CSS", "Spark", "pyspark", "Apache Kafka", "Docker", "Kubernetes", "Cloud Computing", "lex and yacc",  "Pytorch", "tensorflow", "matplotlib", "diffusion models"
   ]
   const projectList = [
     {
@@ -63,8 +67,53 @@ const skillList = [
       title: "task manager web app",
       description: "(Completed on 15th November 2023) An application that has productivity features like to do lists, notes, study timers and gentle music. I was tasked to implement a to do list with complete server and database connectivity.",
       links: ["https://github.com/praakhya/task-manager-se", "https://zeme.androiddevelopers.in/"]
+    },
+    {
+      title: "Github IO Page",
+      description: "A Github.io page that contains a brief description of my work and some articles that I have written.",
+      links: ["https://github.com/praakhya/praakhya.github.io.git","https://praakhya.github.io/"]
+    },
+    {
+      title: "Implementing Cloud Consensus Algorithms",
+      description: "A simple demonstration of consensus algorithms in single leader systems using a task manager application.",
+      links: ["https://github.com/praakhya/378_413_428_Project-2"]
+    },
+    {
+      title: "demonstrating object oriented principles",
+      description: "A project that uses object oriented principles, design principles and design patterns to create a movie booking system using spring framework, thyme leaf and MongoDB.",
+      links: ["https://github.com/praakhya/OOAD_ChaplinCinema"]
+    },
+    {
+      title: "abstract factory pattern",
+      description: "A simple recipe management application that utilises the Abstract Factory method.",
+      links: ["https://github.com/praakhya/OOAD_RecipeManagement"]
+    },
+    {
+      title: "generic programming to mimic make my trip",
+      description: "A C++ application that mimics some simple features of Make My Trip while also using various Generic Programming constructs such as templates in C++.",
+      links: ["https://github.com/praakhya/GP_MakeMyTrip"]
+    },
+    {
+      title: "pub/sub and streaming data",
+      description: "Demonstrating a data streaming pipeline in spark that uses messages from Apache Kafka as data source for handling a Twitter database.",
+      links: ["https://github.com/praakhya/DBT_Spark"]
+    },
+    {
+      title: "object oriented concepts",
+      description: "Creating a registry of object-oriented design patterns and their example implementations in java.\n",
+      links: ["https://github.com/praakhya/ObjectOrientedDesign"]
+    },
+    {
+      title: "",
+      description: "",
+      links: []
     }
   ]
+/*
+
+
+
+*/
 function goToHome() {
     window.location.assign("index.html")
 }
@@ -90,14 +139,16 @@ function render() {
         para.appendChild(document.createTextNode(project.description))
         projectContainer.appendChild(heading)
         projectContainer.appendChild(para)
-        
+        var links = document.createElement("div")
+      links.className = "links"
         for (var link of project.links) {
             console.log(link)
             var a = document.createElement("a")
             a.appendChild(document.createTextNode(link))
             a.href = link
-            projectContainer.appendChild(a)
+            links.appendChild(a)
         }
+        projectContainer.appendChild(links)
         projectsContainer.appendChild(projectContainer)
     }
 }

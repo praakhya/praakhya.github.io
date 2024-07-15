@@ -15,14 +15,14 @@
 <body>
     <div class="nav" onmouseleave="hideToc()">
         <div id="table-of-contents">
-            <a class="row" href="resume.html">📄 My Resume</a>
+            <a class="row" href="resume.html" style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 1.5em"><span class="material-symbols-outlined">article</span><span>My Resume</span></a>
             <a class="row" href="interestingThings.html">? Some Interesting Things</a>
         </div>
     </div>
     <div class="page">
 
         <span class="material-symbols-outlined menu" onclick="showToc()">
-            expand_more
+            menu
         </span>
         <div class="header">
             <h1>
@@ -33,9 +33,9 @@
             </h4>
         </div>
         <div class="about">
-            <div class="bold-head">Hi, I am <span class="bold">Praakhya</span>!</div>
+            <div class="bold-head">Hi, I am <a href="resume.html" class="bold contact-info-link">Praakhya</a>!</div>
             <hr class="divider" />
-            <p>I am a 3rd year B.Tech student that is interested in all things technology and art. On this website I
+            <p>I am a final year Computer Science Under-graduate student that is interested in all things technology and art. On this website I
                 share
                 some parts of that journey!</p>
         </div>
@@ -134,25 +134,73 @@
             </div>
 
         </div>
-        <div class="para align-right">
-            <div class="code-bracket" onclick="goToGit('https://github.com/praakhya/carousel.git')">
-                <div class="code">
+      <div class="para align-right">
+        <div class="code-bracket"
+             onclick="goToGit('https://github.com/praakhya/third-semester-webtech-project.git')">
+          <div class="code">
                     <span class="material-symbols-outlined">
                         code
                     </span>
-                </div>
-            </div>
-            <div class="content">
-                <h1>My First Open Source Contribution</h1>
-                <p>As part of the above web technologies project, I was able to publish an open source React component.
-                </p>
-            </div>
-
+          </div>
+        </div>
+        <div class="content">
+          <h1>My First Open Source Contribution</h1>
+          <p>As part of the above web technologies project, I was able to publish an open source React component that provided a basic carousel for various types of html elements ranging from images to plain divs.
+          </p>
         </div>
 
+      </div>
+      <div class="para align-right">
+        <div class="content">
+          <h1>Beyond Web Development</h1>
+          <p> In the fourth semester we were introduced to Computer Networks and Microprocessors which unlocked a realm of knowledge that was inaccessible before.
+            Learning Computer Networks gave a very reasonable explanation for many of the standards maintained in today's web development scenario.
+            While basics of web development usually deals with receiving, sending and representing information, Computer Networks forms the entire structure that lies in between, with its complexities hidden from one that does not look for it.
+          </p>
+        </div>
+      </div>
+      <div class="para align-right">
+        <div class="content">
+          <h1>Databases</h1>
+          <p>
+            As the problem sizes became bigger, there soon was a need to maintain big data in a understandable and accessible format.
+            So we learnt technologies like MySQL, MongoDB, etc. in great depth while also looking at their alternatives and competitors.
+          </p>
+        </div>
+      </div>
+      <div class="para align-right">
+        <div class="content">
+          <h1>The Cloud</h1>
+          <p>
+            In today's systems, most data is somehow connected with the cloud to make data
+            storage more reliable and scalable. Looking at Web development and databases
+            from a cloud perspective seemed to be a final connecting piece that bridged
+            the gap between book knowledge and current technology trends.
+
+            As data of the future becomes larger and more intricate, the cloud seems to be a
+            permanent tool required in some way or the other
+          </p>
+        </div>
+      </div>
+      <div class="para align-right">
+        <div class="content">
+          <h1>Design in Problem Solving</h1>
+          <p>
+            This seemed to be something that was not really a part of anything else but was always used in every step of big projects.
+            Topics like Object-Oriented Programming, and Generic Programming gave a sort of methodology to program instead of
+            applying the usual method of rapidly inserting code lines in an insensible manner.
+
+            By organising code into objects where possible, not only did the code become cleaner, but each operation made more sense.
+
+            Generic Programming made the code efficient and in someways intuitive. By replacing repeated code lines with
+            single code blocks as a "one size fits all approach" code began to look more mathematical, which is sometimes more understandable than native coding natures of a language.
+          </p>
+        </div>
+      </div>
         <img src="./assets/images/gear.svg" id="rotate" />
         <hr>
     </div>
+
 
     <script src="script.js"></script>
     <script src="about.js"></script>

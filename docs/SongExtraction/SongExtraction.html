@@ -4,6 +4,8 @@
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script><link rel="stylesheets" href="../../styles.css"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Extracting list of songs using Python</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
 html {
 	-webkit-print-color-adjust: exact;
 }
@@ -34,7 +36,7 @@ body {
 	top: 1em;
 	left: 1em;
 }
-#home-text { 
+#home-text {
     text-decoration: none;
 	font-size: 1em;;
 	font-family: var(--roboto);
@@ -697,7 +699,7 @@ blockquote {
 .checkbox-off {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
-	
+
 </style></head><body><article id="3684998c-64ad-4d0d-bc19-23038bffd68b" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1585427670610-6e63ac2093b3?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/playlist_blue.svg"/></div><h1 class="page-title">Extracting list of songs using Python</h1><p class="page-description"></p></header><div id="home"><a id="home-text" href="../../interestingThings.html"><span class="material-symbols-outlined">
 	arrow_back
 </span></a></div><div class="page-body"><p id="1ed6e827-4538-4dcf-846f-0d8a103e4cd3" class="">This is a make-shift guide on how to get a list of songs from a youtube music playlist using web-scraping.</p><figure class="block-color-red callout" style="white-space:pre-wrap;display:flex" id="4bcb47de-7510-4f6d-8b47-72195f0270e2"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/list-indent_gray.svg"/></div><div style="width:100%"><strong><mark class="highlight-default">Table of Contents</mark></strong><nav id="aa4185d6-63c4-4e07-8d1e-358005a6afc3" class="block-color-blue table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#305449b5-a623-4364-8060-7dda5b0d98cf">What is web-scraping ?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fe2f55ae-9d8d-469f-af37-3a96177bbc8e">Task</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9254f4c9-78c5-473f-9daf-fb46ddc2c4a6">Set up</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#48326bab-f094-41e7-81fc-7212a37a45f5">Begin Scraping</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#98c0b0d7-966e-4d1f-8153-3a6db05dac5a">The complete code</a></div></nav></div></figure><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">What is web-scraping ?</summary><div class="indented"><p id="2f2c1bd5-6e86-4e71-8af5-0e244e9d3a1e" class="">As wikipedia defines it,</p><blockquote id="d6e7fdb0-bcb3-4780-9d8f-d9422d31a900" class="">Web scraping, web harvesting, or web data extraction is data scraping used for extracting data from websites.</blockquote><p id="3282e30d-6f5b-4ec2-bc0f-ea03d648c391" class="">We can make use of some libraries that python provides to perform web-scraping.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Task</summary><div class="indented"><p id="1b2c59e0-6c30-492d-8369-8a90df969680" class="">We need to get a list of songs from the youtube music page by extracting information from the html text of the page. This can be done by web-scraping.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Set up</summary><div class="indented"><p id="4d3cb9d1-bb61-4c28-b1a8-22706d14d828" class="">The first basic requirement is python installed on the system. Then, the following libraries have to be installed to be used in our python script</p><ol type="1" id="67f9bd4e-0efc-492e-8ffc-511f6b92b6e0" class="numbered-list" start="1"><li>bs4
@@ -778,4 +780,6 @@ This is the modified code for the same: -</p><pre id="581f159c-244e-45af-8fb5-60
 	i+=1
 </code></pre><p id="9ff09a31-817b-4cf9-8914-b731896bb8c8" class="">
 </p></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">The complete code</summary><div class="indented"><figure id="6c1107fe-0700-4eb7-8d52-934e2c2574d9"><div class="source"><a href="https://gist.github.com/praakhya/6afc2c915efeb3743b80aa08c13fd7e9">https://gist.github.com/praakhya/6afc2c915efeb3743b80aa08c13fd7e9</a></div></figure></div></details></div></article>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="praakhya" data-description="Support me on Buy me a coffee!" data-message="If you found some value in my content, consider buying me a coffee!" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
 </body></html>
