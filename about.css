@@ -185,3 +185,31 @@ h1.para {
         transform: rotate(360deg);
     }
 }
+.home {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+}
+.home:hover {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.home:hover:after {
+  content: "Back home";
+  vertical-align: center;
+}
+.link-button {
+  border: 1px solid white;
+  padding: 0.015em;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+  border-radius: 0.5em;
+  text-decoration: none;
+  color: white;
+}
+.link-button:hover {
+  background-color: white;
+  color: var(--dark-blue);
+  border-color: var(--light-blue);
+}

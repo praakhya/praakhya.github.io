@@ -13,10 +13,10 @@
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 </head>
 
-<body>
+<body onload="render()">
     <div class="nav" onmouseleave="hideToc()">
         <div id="table-of-contents">
-            <a class="row" href="resume.html" style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 1.5em"><span class="material-symbols-outlined">article</span><span>My Resume</span></a>
+            <a class="row" href="resume.html" style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 1em"><span class="material-symbols-outlined" style="font-size: 5vw">article</span><span>My Resume</span></a>
             <a class="row" href="interestingThings.html">? Some Interesting Things</a>
         </div>
     </div>
@@ -32,11 +32,11 @@
           <a href="https://www.linkedin.com/in/praakhyaavasthi/">
             <img src="assets/logos/linkedin.png" class="logo round"/>
           </a>
-          <span class="material-symbols-outlined menu" onclick="showToc()">
+          <span class="material-symbols-outlined menu" onclick="toggleTOC()">
             menu
         </span>
         </div>
-        <div class="header">
+        <div class="main-header">
             <h1>
                 Welcome
             </h1>
@@ -47,175 +47,26 @@
         <div class="about">
             <div class="bold-head">Hi, I am <a href="resume.html" class="bold contact-info-link">Praakhya</a>!</div>
             <hr class="divider" />
-            <p>I am a final year Computer Science Under-graduate student that is interested in all things technology and art. On this website I
-                share
-                some parts of that journey!</p>
+            <p>I am a final year Computer Science Under-graduate student that is interested in all things technology and art.
+              <a class="link-button" href="about.html">About Me ></a>
+            </p>
+
         </div>
         <div class="card-end">
+          <a class="down-arrow vert-move material-symbols-outlined" href="#details">
+          keyboard_arrow_down
+          </a>
 
         </div>
 
     </div>
-
-    <div class="about-page">
-        <div class="para">
-            <div class="code-bracket" onclick="goToGit('https://github.com/praakhya/computer-project-class12-maze.git')">
-                <div class="code">
-                    <span class="material-symbols-outlined">
-                        code
-                    </span>
-                </div>
-            </div>
-            <div class="content">
-                <h1>Early beginnings...</h1>
-                <p>As a student of Computer Science in High School I got my first experience with making a program from
-                    scratch that had a database and a UI.</p>
-                <p>We learnt
-                    <img
-                        src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png"
-                        class="icon" alt=""/> Python and <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png"
-                        class="icon" alt=""/> MySQL at the time. So our project was a game made using pygame that utilised a
-                    local
-                    mysql database for a simple leaderboard.</p>
-            </div>
-            <video class="gdriveVideo" preload="auto" muted autoplay loop playbackRate = 5>
-                <source src="./assets/videos/maze_class12.mp4"
-                    type='video/mp4'>
-            </video>
-        </div>
-        <div class="para align-right">
-            <div class="code-bracket" onclick="goToGit('https://github.com/praakhya/first-year-computer-project.git')">
-                <div class="code">
-                    <span class="material-symbols-outlined">
-                        code
-                    </span>
-                </div>
-            </div>
-            <div class="content">
-                <h1>Level Up</h1>
-                <p>In the first semester of college I once again learnt Python at a more advance level. I was introduced
-                    to
-                    concepts like OOPs, modularity etc.</p>
-                <p>I also learnt Tkinter which is another way to make UI in Python. As part of our course requirements
-                    we
-                    implemented another game using Tkinter as the UI.</p>
-            </div>
-        </div>
-        <div class="para align-right">
-            <div class="code-bracket" onclick="goToGit('https://github.com/praakhya/second-semester-computer-project.git')">
-                <div class="code">
-                    <span class="material-symbols-outlined">
-                        code
-                    </span>
-                </div>
-            </div>
-            <div class="content">
-                <h1>Something new</h1>
-                <p>The next language I learnt was <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/3/35/The_C_Programming_Language_logo.svg"
-                        class="icon" />. After rigourously using Python for 2 years, switching to C provided with a new
-                    challenge. However, in the end it proved to be a good experience. Though type safety is a concept
-                    that python chooses to avoid, on getting used to it, it can be very useful, specially in debugging.
-                </p>
-                <p>Just as before, we were assigned to make project for this course. We implemented a calculator that
-                    did calculations other than the usual such as base conversions, matrix arithmetic and geomteric
-                    shape metrics.</p>
-            </div>
-        </div>
-        <div class="para align-right">
-            <div class="code-bracket" onclick="goToGit('https://github.com/praakhya/third-semester-webtech-project.git')">
-                <div class="code">
-                    <span class="material-symbols-outlined">
-                        code
-                    </span>
-                </div>
-            </div>
-            <div class="content">
-                <h1>The World of Web Devlopment</h1>
-                <p>In the third semester one of the major projects we were tasked with was a full stack web application.
-                    This was the first time I was introduced to the deeper parts of web development aside from the basic
-                    HTML and CSS we are taught in school.</p>
-                <p>Our course was for learning the MERN stack (MongoDB, ExpressJs, React, NodeJs).</p>
-                <p>As a side product of the project I learnt how to handle JSON files and how servers worked. This was
-                    an interesting project and it provided me with a lot of knowledge that still comes in handy today,
-                    because in today's world a website can be a useful way to communicate with people over the internet.
-                </p>
-                <p>Our project was a book store/ book management application. At that point in time we implemented
-                    simple CRUD operations.</p>
-
-            </div>
-
-        </div>
-      <div class="para align-right">
-        <div class="code-bracket"
-             onclick="goToGit('https://github.com/praakhya/third-semester-webtech-project.git')">
-          <div class="code">
-                    <span class="material-symbols-outlined">
-                        code
-                    </span>
-          </div>
-        </div>
-        <div class="content">
-          <h1>My First Open Source Contribution</h1>
-          <p>As part of the above web technologies project, I was able to publish an open source React component that provided a basic carousel for various types of html elements ranging from images to plain divs.
-          </p>
-        </div>
-
-      </div>
-      <div class="para align-right">
-        <div class="content">
-          <h1>Beyond Web Development</h1>
-          <p> In the fourth semester we were introduced to Computer Networks and Microprocessors which unlocked a realm of knowledge that was inaccessible before.
-            Learning Computer Networks gave a very reasonable explanation for many of the standards maintained in today's web development scenario.
-            While basics of web development usually deals with receiving, sending and representing information, Computer Networks forms the entire structure that lies in between, with its complexities hidden from one that does not look for it.
-          </p>
-        </div>
-      </div>
-      <div class="para align-right">
-        <div class="content">
-          <h1>Databases</h1>
-          <p>
-            As the problem sizes became bigger, there soon was a need to maintain big data in a understandable and accessible format.
-            So we learnt technologies like MySQL, MongoDB, etc. in great depth while also looking at their alternatives and competitors.
-          </p>
-        </div>
-      </div>
-      <div class="para align-right">
-        <div class="content">
-          <h1>The Cloud</h1>
-          <p>
-            In today's systems, most data is somehow connected with the cloud to make data
-            storage more reliable and scalable. Looking at Web development and databases
-            from a cloud perspective seemed to be a final connecting piece that bridged
-            the gap between book knowledge and current technology trends.
-
-            As data of the future becomes larger and more intricate, the cloud seems to be a
-            permanent tool required in some way or the other
-          </p>
-        </div>
-      </div>
-      <div class="para align-right">
-        <div class="content">
-          <h1>Design in Problem Solving</h1>
-          <p>
-            This seemed to be something that was not really a part of anything else but was always used in every step of big projects.
-            Topics like Object-Oriented Programming, and Generic Programming gave a sort of methodology to program instead of
-            applying the usual method of rapidly inserting code lines in an insensible manner.
-
-            By organising code into objects where possible, not only did the code become cleaner, but each operation made more sense.
-
-            Generic Programming made the code efficient and in someways intuitive. By replacing repeated code lines with
-            single code blocks as a "one size fits all approach" code began to look more mathematical, which is sometimes more understandable than native coding natures of a language.
-          </p>
-        </div>
-      </div>
-        <img src="./assets/images/gear.svg" id="rotate" width="20%" height="20%"/>
-        <hr>
+    <div id="details">
     </div>
+
+
 
 
     <script src="script.js"></script>
-    <script src="about.js"></script>
 </body>
 
 </html>

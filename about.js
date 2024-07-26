@@ -37,3 +37,7 @@ function setVisible(target) {
 function goToGit(url) {
     window.open(url, "_blank");
 }
+
+function goToHome() {
+  window.location.assign("index.html")
+}
