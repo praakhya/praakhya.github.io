@@ -71,7 +71,7 @@ body {
   color: var(--teal);
 }
 .about {
-    font-size: 3vh
+    font-size: calc(min(4vh,6vw))
 }
 
 .about.divider {

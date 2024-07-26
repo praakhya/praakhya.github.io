@@ -1,6 +1,6 @@
 const details = [
   {
-    "name":"social",
+    "name":"where to find me",
     "content": [
       {
         "name":"Gmail",
@@ -17,6 +17,11 @@ const details = [
         "links":["https://github.com/praakhya"],
         "icon":"assets/logos/github.png"
       },
+      {
+        "name":"NPM",
+        "links":["https://www.npmjs.com/~parslee"],
+        "icon":"assets/logos/npm.png"
+      }
     ]
   },
   {
