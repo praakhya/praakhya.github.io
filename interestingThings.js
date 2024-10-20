@@ -19,6 +19,16 @@ const pages = [
       name: "A Two Day Build",
       path: baseUrl + "/ATwoDayBuild/ATwoDayBuild.html",
       cover: "https://images.unsplash.com/photo-1639431682289-72b9ebb75895?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600"
+    },
+    {
+      name: "Building Big Things with Little Experience",
+      path: "https://praakhya.substack.com/p/building-big-things-with-little-experience",
+      cover: "https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd51f8493-a158-4599-ac87-dba193d6756c_2240x1260.png"
+    },
+    {
+      name: "Planning an Idea",
+      path: "https://praakhya.substack.com/p/planning-an-idea",
+      cover: "https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa8f3e27f-4813-4479-b70a-f770bad85d0e_2800x1980.png"
     }
 ]
 function render() {
